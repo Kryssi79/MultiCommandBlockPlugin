@@ -12,7 +12,7 @@ public class main_MCBP extends JavaPlugin
     @Override
    public void onEnable(){
         // getLogger().info(pdf.getName() + " v" + pdf.getVersion() + " Enabled!");
-        System.out.println("Starte: Multi Command Block Plugin ...  Ver.");
+        System.out.println("Starte: Multi Command Block Plugin ...  ");
    }
    
     @Override
