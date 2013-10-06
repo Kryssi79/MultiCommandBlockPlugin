@@ -1,0 +1,3 @@
+name: MultiCommandBlockPlugin
+main: tk.MultiCommandBlockPlugin.Bukkit.Bukkit
+version: 0.1
