@@ -1,3 +1,8 @@
 name: MultiCommandBlockPlugin
-main: tk.MultiCommandBlockPlugin.Bukkit.Bukkit
 version: 0.1
+description: Multi-Line  and Multi-Command  Block for Bukkit Server
+authors: [MemoryLeakX, Kryssi79]
+website: http://www.noch_keine.net
+
+main: tk.MultiCommandBlockPlugin.Bukkit.Bukkit
+database: false
