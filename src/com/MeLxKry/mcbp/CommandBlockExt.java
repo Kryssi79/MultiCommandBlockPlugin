@@ -2,6 +2,9 @@ package com.MeLxKry.mcbp;
 
 import org.bukkit.block.*;
 import org.bukkit.command.CommandSender;
+import org.bukkit.event.*;
+
+
 
 public class CommandBlockExt 
 {
@@ -30,6 +33,7 @@ public class CommandBlockExt
 	
 	private boolean sendeBefehl(String sCmd)
 	{
+		// BlockCommandSender    /   plugin.getServer().getConsoleSender()
 		return sendeBefehl(plugin.getServer().getConsoleSender(), sCmd);
 	}
 	

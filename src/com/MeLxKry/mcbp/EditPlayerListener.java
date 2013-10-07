@@ -1,15 +1,20 @@
 package com.MeLxKry.mcbp;
 
+import net.minecraft.server.v1_5_R3.BlockCommand;
+
 import org.bukkit.ChatColor;
 import org.bukkit.block.Block;
 //import org.bukkit.material.*;
 import org.bukkit.block.BlockState;
+import org.bukkit.command.BlockCommandSender;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 // import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.*;
 
 
 
@@ -50,6 +55,9 @@ public class EditPlayerListener implements Listener
 			
 		}
 	}
+	
+	
+	
 	
 	
 }
