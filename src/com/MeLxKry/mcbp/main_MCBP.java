@@ -11,8 +11,8 @@ public class main_MCBP extends JavaPlugin
 
 	// public PluginDescriptionFile pdf = this.getDescription();
 	
-	public PluginManager pluginMan;
-	private EditPlayerListener listener;
+	// public PluginManager pluginMan;
+	// private EditPlayerListener listener;
 	
     
     @Override
@@ -20,9 +20,9 @@ public class main_MCBP extends JavaPlugin
         // getLogger().info(pdf.getName() + " v" + pdf.getVersion() + " Enabled!");
         System.out.println("Starte: Multi Command Block Plugin ...  ");
         
-        pluginMan = getServer().getPluginManager();
+        // pluginMan = getServer().getPluginManager();
 
-        pluginMan.registerEvents(listener, this);
+        // pluginMan.registerEvents(listener, this);
    }
     
    

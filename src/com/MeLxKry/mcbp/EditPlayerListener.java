@@ -15,7 +15,7 @@ public class EditPlayerListener implements Listener
 {
 
 		
-	@EventHandler(priority=EventPriority.HIGHEST)
+	@EventHandler(priority=EventPriority.NORMAL )
 	public void onPlayerInteract(PlayerInteractEvent event) {
 		Player player = event.getPlayer();
 		// Block block = event.getClickedBlock();

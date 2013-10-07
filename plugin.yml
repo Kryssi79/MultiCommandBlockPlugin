@@ -4,3 +4,15 @@ description: Multi-Line  and Multi-Command  Block for Bukkit Server
 authors: [MemoryLeakX, Kryssi79]
 
 main: com.MeLxKry.mcbp.main_MCBP
+
+
+
+commands:
+    MultiCommandBlock:
+        description:  CommandBlock edit mit multi-Line
+permissions:
+    MultiCommandBlock.edit:
+        description: Allows you to use /MultiCommandBlock
+        default: false
+        
+        
