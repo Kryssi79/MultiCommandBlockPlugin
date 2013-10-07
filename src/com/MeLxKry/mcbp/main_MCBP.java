@@ -18,6 +18,8 @@ public class main_MCBP extends JavaPlugin
         System.out.println("Starte: Multi Command Block Plugin ...  ");
         pluginMan = getServer().getPluginManager();
         
+        ConfigSpeichern();
+        
         // Commands: 
         this.getCommand("mcbTest").setExecutor(new testCommand());
         
@@ -26,13 +28,18 @@ public class main_MCBP extends JavaPlugin
    }
     
    
-    
-    
     @Override
    public void onDisable() {
     	System.out.println("beende:  Multi Command Block Plugin ");
    }
     
+   
     
+    private void ConfigSpeichern()
+    {
+    	// saveConfig();
+    	this.saveDefaultConfig();
+    	//this.saveResource(arg0, arg1);
+    }
     
 }
