@@ -12,8 +12,12 @@ import org.bukkit.metadata.MetadataValue;
 import org.bukkit.plugin.Plugin;
 
 public class CommandBlockExt implements CommandBlock {
-
+	main_MCBP plugin;
 	private String m_currentCommandString;
+	
+	public CommandBlockExt(main_MCBP plugin) {
+		this.plugin = plugin;
+	}
 	
 	@Override
 	public Block getBlock() {
