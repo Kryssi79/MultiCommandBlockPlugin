@@ -8,6 +8,10 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 // import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+//import org.bukkit.material.*;
+import org.bukkit.block.*;
+import org.bukkit.craftbukkit.v1_5_R3.block.*;
+
 // import org.bukkit.event.player.PlayerJoinEvent;
 
 
@@ -33,9 +37,15 @@ public class EditPlayerListener implements Listener
 			player.sendMessage("     Power: " + block.getBlockPower() );
 			player.sendMessage("     State: " + block.getState() );
 			player.sendMessage("     Type: " + block.getType() );
+			
+			//org.bukkit.craftbukkit.v1_5_R3.block.CraftCommandBlock
+			//org.bukkit.craftbukkit.v1_5_R3.block.CraftBlock
+			CommandBlock Kommandoblock = null;
+			// ... 
 			if(oBlAct == org.bukkit.event.block.Action.RIGHT_CLICK_BLOCK)
 			{
 				// rechte MausTaste  auf Kommandoblock
+				// player.sendMessage("     Command: " + Kommandoblock.getCommand() );
 			}
 		}
 	}
