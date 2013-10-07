@@ -46,25 +46,12 @@ public class EditPlayerListener implements Listener
 			player.sendMessage("     Power: " + block.getBlockPower() );
 			player.sendMessage("     State: " + block.getState() );
 			player.sendMessage("     Type: " + block.getType() );
-			
-			//org.bukkit.craftbukkit.v1_5_R3.block.CraftCommandBlock
-			//org.bukkit.craftbukkit.v1_5_R3.block.CraftBlock
-			CommandBlock Kommandoblock = null;
-			// ... 
+
 			if(oBlAct == org.bukkit.event.block.Action.RIGHT_CLICK_BLOCK)
 			{
 				// rechte MausTaste  auf Kommandoblock
-				// player.sendMessage("     Command: " + Kommandoblock.getCommand() );
-				//getServer().getPluginManager().registerEvents(new CommandBlockExt(), this);
-				// plugin.getServer().getPluginManager().registerInterface(new CommandBlockExt(this));
-				CommandBlockExt cmdBlockExt = new CommandBlockExt(plugin);
-				player.sendMessage("    Type ID: " + cmdBlockExt.getTypeId() );
-				// x
-				BlockState state = event.getClickedBlock().getState();
-				CommandBlock commandBlock = (CommandBlock) state;
-				commandBlock.setCommand("/say Hello World");
-				event.getPlayer().sendMessage("Command set!  OK");
-				commandBlock.update();
+				BlockState blState = event.getClickedBlock().getState();
+				CommandBlockExt cmdBlockExt = new CommandBlockExt(plugin, blState);
 			}
 		}
 	}
