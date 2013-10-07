@@ -13,6 +13,6 @@ commands:
 permissions:
     MultiCommandBlock.edit:
         description: Allows you to use /MultiCommandBlock
-        default: false
+        default: op
         
         
