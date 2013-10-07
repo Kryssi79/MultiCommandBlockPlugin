@@ -2,7 +2,6 @@ package com.MeLxKry.mcbp;
 
 // import java.io.IOException;
 
-// import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -10,19 +9,19 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class main_MCBP extends JavaPlugin 
 {
-	// public PluginDescriptionFile pdf = this.getDescription();
-	
 	public PluginManager pluginMan;
 	
     
     @Override
-   public void onEnable(){
-        // getLogger().info(pdf.getName() + " v" + pdf.getVersion() + " Enabled!");
+   public void onEnable()
+   {
         System.out.println("Starte: Multi Command Block Plugin ...  ");
+        pluginMan = getServer().getPluginManager();
         
+        // Commands: 
         this.getCommand("mcbTest").setExecutor(new testCommand());
         
-        pluginMan = getServer().getPluginManager();
+        // Events: 
         getServer().getPluginManager().registerEvents(new EditPlayerListener(), this);
    }
     
