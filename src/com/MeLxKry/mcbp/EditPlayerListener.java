@@ -2,19 +2,14 @@ package com.MeLxKry.mcbp;
 
 import org.bukkit.ChatColor;
 import org.bukkit.block.Block;
+//import org.bukkit.material.*;
+import org.bukkit.block.BlockState;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 // import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
-//import org.bukkit.material.*;
-import org.bukkit.block.*;
-import org.bukkit.craftbukkit.v1_5_R3.block.*;
-import org.bukkit.plugin.PluginManager;
-import org.bukkit.plugin.java.JavaPlugin;
-
-import com.MeLxKry.mcbp.*;
 
 
 
@@ -41,7 +36,6 @@ public class EditPlayerListener implements Listener
 			//   http://minecraft-de.gamepedia.com/Kommandoblock
 			org.bukkit.event.block.Action oBlAct = event.getAction();
 			player.sendMessage("     Class: " + block.getClass() + "  ");
-			player.sendMessage("            " + block.getClass().getName());
 			player.sendMessage("   event Action: " + oBlAct.toString());
 			player.sendMessage("     Power: " + block.getBlockPower() );
 			player.sendMessage("     State: " + block.getState() );
@@ -53,6 +47,7 @@ public class EditPlayerListener implements Listener
 				BlockState blState = event.getClickedBlock().getState();
 				CommandBlockExt cmdBlockExt = new CommandBlockExt(plugin, blState);
 			}
+			
 		}
 	}
 	
