@@ -8,10 +8,10 @@ main: com.MeLxKry.mcbp.main_MCBP
 
 
 commands:
-    MultiCommandBlock:
+    MultiCommandBlockPlugin:
         description:  CommandBlock edit mit multi-Line
 permissions:
-    MultiCommandBlock.edit:
+    MultiCommandBlockPlugin.edit:
         description: Allows you to use /MultiCommandBlock
         default: false
         

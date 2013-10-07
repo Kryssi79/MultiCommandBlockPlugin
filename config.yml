@@ -1,0 +1,12 @@
+MultiCommandBlockPlugin:    
+    ignorecreative: true
+    
+    invertmouse: false
+    
+    log:
+        filename: MultiCommandBlockPlugin.log
+        
+    commands:
+        logtofile: false
+        logtoconsole: false  
+		
