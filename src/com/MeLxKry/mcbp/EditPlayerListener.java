@@ -56,7 +56,9 @@ public class EditPlayerListener implements Listener
 				// rechte MausTaste  auf Kommandoblock
 				// player.sendMessage("     Command: " + Kommandoblock.getCommand() );
 				//getServer().getPluginManager().registerEvents(new CommandBlockExt(), this);
-				plugin.getServer().getPluginManager().registerInterface(CommandBlockExt());
+				// plugin.getServer().getPluginManager().registerInterface(new CommandBlockExt(this));
+				CommandBlockExt cmdBlockExt = new CommandBlockExt(plugin);
+				player.sendMessage("    Type ID: " + cmdBlockExt.getTypeId() );
 			}
 		}
 	}
