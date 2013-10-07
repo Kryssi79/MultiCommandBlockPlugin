@@ -2,8 +2,6 @@ package com.MeLxKry.mcbp;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
-
-
 public class main_MCBP extends JavaPlugin 
 {
 
