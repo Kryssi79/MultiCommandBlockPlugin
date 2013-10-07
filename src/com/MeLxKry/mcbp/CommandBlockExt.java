@@ -13,6 +13,8 @@ import org.bukkit.plugin.Plugin;
 
 public class CommandBlockExt implements CommandBlock {
 
+	private String m_currentCommandString;
+	
 	@Override
 	public Block getBlock() {
 		// TODO Auto-generated method stub
@@ -159,8 +161,7 @@ public class CommandBlockExt implements CommandBlock {
 
 	@Override
 	public String getCommand() {
-		// TODO Auto-generated method stub
-		return null;
+		return m_currentCommandString;
 	}
 
 	@Override
@@ -171,7 +172,7 @@ public class CommandBlockExt implements CommandBlock {
 
 	@Override
 	public void setCommand(String arg0) {
-		// TODO Auto-generated method stub
+		m_currentCommandString = arg0;
 		
 	}
 
