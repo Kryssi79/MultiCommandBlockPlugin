@@ -8,11 +8,14 @@ main: com.MeLxKry.mcbp.main_MCBP
 
 
 commands:
-    MultiCommandBlock:
-        description:  CommandBlock edit mit multi-Line
+  mcbTest:
+    description:  CommandBlock Test
+    usage: wenn Fehler
+    permission: mcbTest.use
+    
 permissions:
-    MultiCommandBlock.edit:
-        description: Allows you to use /MultiCommandBlock
-        default: op
+  MultiCommandBlock.edit:
+    description: Allows you to use /MultiCommandBlock
+    default: op
         
         
