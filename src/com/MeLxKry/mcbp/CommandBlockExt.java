@@ -70,7 +70,7 @@ public class CommandBlockExt implements CommandBlock {
 	@Override
 	public int getTypeId() {
 		// TODO Auto-generated method stub
-		return 0;
+		return 137;
 	}
 
 	@Override
