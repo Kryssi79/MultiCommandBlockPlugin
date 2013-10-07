@@ -59,6 +59,7 @@ public class EditPlayerListener implements Listener
 				// plugin.getServer().getPluginManager().registerInterface(new CommandBlockExt(this));
 				CommandBlockExt cmdBlockExt = new CommandBlockExt(plugin);
 				player.sendMessage("    Type ID: " + cmdBlockExt.getTypeId() );
+				// x
 			}
 		}
 	}
