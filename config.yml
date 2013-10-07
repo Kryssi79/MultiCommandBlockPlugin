@@ -1,10 +1,10 @@
-MultiCommandBlockPlugin:    
+MultiCommandBlock:    
     ignorecreative: true
     
     invertmouse: false
     
     log:
-        filename: MultiCommandBlockPlugin.log
+        filename: MultiCommandBlock.log
         
     commands:
         logtofile: false

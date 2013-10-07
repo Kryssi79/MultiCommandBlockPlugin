@@ -1,4 +1,4 @@
-name: MultiCommandBlockPlugin
+name: MultiCommandBlock
 version: 0.1
 description: Multi-Line  and Multi-Command  Block for Bukkit Server
 authors: [MemoryLeakX, Kryssi79]
@@ -8,10 +8,10 @@ main: com.MeLxKry.mcbp.main_MCBP
 
 
 commands:
-    MultiCommandBlockPlugin:
+    MultiCommandBlock:
         description:  CommandBlock edit mit multi-Line
 permissions:
-    MultiCommandBlockPlugin.edit:
+    MultiCommandBlock.edit:
         description: Allows you to use /MultiCommandBlock
         default: false
         
