@@ -11,14 +11,23 @@ import org.bukkit.event.player.PlayerInteractEvent;
 //import org.bukkit.material.*;
 import org.bukkit.block.*;
 import org.bukkit.craftbukkit.v1_5_R3.block.*;
+import org.bukkit.plugin.PluginManager;
+import org.bukkit.plugin.java.JavaPlugin;
 
-// import org.bukkit.event.player.PlayerJoinEvent;
+import com.MeLxKry.mcbp.*;
+
 
 
 public class EditPlayerListener implements Listener 
 {
 
 		
+	main_MCBP plugin;
+	
+	public EditPlayerListener(main_MCBP plugin) {
+		this.plugin = plugin;
+	}
+	
 	@EventHandler(priority=EventPriority.NORMAL )
 	public void onPlayerInteract(PlayerInteractEvent event) {
 		Player player = event.getPlayer();
@@ -46,6 +55,8 @@ public class EditPlayerListener implements Listener
 			{
 				// rechte MausTaste  auf Kommandoblock
 				// player.sendMessage("     Command: " + Kommandoblock.getCommand() );
+				//getServer().getPluginManager().registerEvents(new CommandBlockExt(), this);
+				plugin.getServer().getPluginManager().registerInterface(CommandBlockExt());
 			}
 		}
 	}

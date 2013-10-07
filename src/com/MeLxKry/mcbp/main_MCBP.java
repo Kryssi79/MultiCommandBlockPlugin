@@ -22,7 +22,7 @@ public class main_MCBP extends JavaPlugin
         this.getCommand("mcbTest").setExecutor(new testCommand());
         
         // Events: 
-        getServer().getPluginManager().registerEvents(new EditPlayerListener(), this);
+        getServer().getPluginManager().registerEvents(new EditPlayerListener(this), this);
    }
     
    
