@@ -7,12 +7,12 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 
+
 public class main_MCBP extends JavaPlugin 
 {
 	// public PluginDescriptionFile pdf = this.getDescription();
 	
-	// public PluginManager pluginMan;
-	// private EditPlayerListener listener;
+	public PluginManager pluginMan;
 	
     
     @Override
@@ -22,8 +22,8 @@ public class main_MCBP extends JavaPlugin
         
         this.getCommand("mcbTest").setExecutor(new testCommand());
         
-        // pluginMan = getServer().getPluginManager();
-        // pluginMan.registerEvents(listener, this);
+        pluginMan = getServer().getPluginManager();
+        getServer().getPluginManager().registerEvents(new EditPlayerListener(), this);
    }
     
    
