@@ -60,6 +60,11 @@ public class EditPlayerListener implements Listener
 				CommandBlockExt cmdBlockExt = new CommandBlockExt(plugin);
 				player.sendMessage("    Type ID: " + cmdBlockExt.getTypeId() );
 				// x
+				BlockState state = event.getClickedBlock().getState();
+				CommandBlock commandBlock = (CommandBlock) state;
+				commandBlock.setCommand("/say Hello World");
+				event.getPlayer().sendMessage("Command set!  OK");
+				commandBlock.update();
 			}
 		}
 	}
