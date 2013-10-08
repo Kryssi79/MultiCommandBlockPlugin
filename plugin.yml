@@ -12,6 +12,10 @@ commands:
     description:  CommandBlock Test
     usage: wenn Fehler
     permission: mcbTest.use
+  MCB:
+    description:  multi Commands
+    usage: wenn Fehler
+    permission: MCB.use
     
 permissions:
   MultiCommandBlock.edit:

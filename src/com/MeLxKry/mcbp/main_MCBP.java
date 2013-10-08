@@ -5,6 +5,8 @@ package com.MeLxKry.mcbp;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.MeLxKry.mcbp.pluginCommands.*;
+
 
 
 public class main_MCBP extends JavaPlugin 
@@ -22,6 +24,7 @@ public class main_MCBP extends JavaPlugin
         
         // Commands: 
         this.getCommand("mcbTest").setExecutor(new testCommand());
+        this.getCommand("MCB").setExecutor(new MCB_Command());
         
         // Events: 
         getServer().getPluginManager().registerEvents(new EditPlayerListener(this), this);
