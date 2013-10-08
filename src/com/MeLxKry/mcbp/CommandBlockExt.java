@@ -3,23 +3,63 @@ package com.MeLxKry.mcbp;
 import org.bukkit.block.*;
 import org.bukkit.command.CommandSender;
 import org.bukkit.event.*;
+import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.block.BlockRedstoneEvent;
+import org.bukkit.event.block.SignChangeEvent;
 
 
-
-public class CommandBlockExt 
+public class CommandBlockExt implements Listener 
 {
 	main_MCBP plugin;
-	CommandBlock m_CommandBlock;
+	CommandBlock m_CommandBlock;  //  = (CommandBlock)state    = BlockState state
 	String m_CommandsString;
 	
 	
-	public CommandBlockExt(main_MCBP plugin, BlockState state) {
+	public CommandBlockExt(main_MCBP plugin) 
+	{
+		this.plugin = plugin;
+	}
+	
+	public CommandBlockExt(main_MCBP plugin, BlockState state) 
+	{
 		this.plugin = plugin;
 		if (state instanceof CommandBlock)
 		{
 			m_CommandBlock = (CommandBlock)state;
 		}
 		getCommand();
+	}
+	
+		
+	@EventHandler(priority=EventPriority.NORMAL )
+	public void onBlockRedstone(BlockRedstoneEvent event) 
+	{
+		//wenn: am Block  redstone  gebaut/abgebaut   bzw. Signal sich ändert
+		Block block = event.getBlock();
+		int iBlockID = block.getTypeId();
+		if ( !(iBlockID==137) )   { return; }
+		BlockState blState = event.getBlock().getState();
+		if (blState instanceof CommandBlock)   // Kommandoblock
+		{
+			m_CommandBlock = (CommandBlock)blState;
+			int iPower= block.getBlockPower();
+			if(iPower==0) { return; }
+			System.out.println(" MCBP plugin:  Kommandoblock  onBlockRedstone()  ");
+			System.out.println(" MCBP plugin:   BlockPower =  " + iPower);
+			m_CommandsString = m_CommandBlock.getCommand();
+			System.out.println(" MCBP plugin:    " + m_CommandsString);
+		}
+	}
+	
+	@EventHandler(priority=EventPriority.NORMAL )
+	public void onBlockSignChange(SignChangeEvent event) 
+	{
+		Block block = event.getBlock();
+		int iBlockID = block.getTypeId();
+		if(iBlockID==137)   // Kommandoblock
+		{
+			System.out.println(" MCBP plugin:  Kommandoblock  onBlockSignChange()  ");
+		}
 	}
 	
 	

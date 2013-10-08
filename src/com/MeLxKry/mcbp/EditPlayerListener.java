@@ -21,7 +21,6 @@ import org.bukkit.event.*;
 public class EditPlayerListener implements Listener 
 {
 
-		
 	main_MCBP plugin;
 	
 	public EditPlayerListener(main_MCBP plugin) {
@@ -29,7 +28,8 @@ public class EditPlayerListener implements Listener
 	}
 	
 	@EventHandler(priority=EventPriority.NORMAL )
-	public void onPlayerInteract(PlayerInteractEvent event) {
+	public void onPlayerInteract(PlayerInteractEvent event) 
+	{
 		Player player = event.getPlayer();
 		Block block = event.getClickedBlock();
 		int iBlockID = block.getTypeId();
@@ -40,16 +40,15 @@ public class EditPlayerListener implements Listener
 		{
 			//   http://minecraft-de.gamepedia.com/Kommandoblock
 			org.bukkit.event.block.Action oBlAct = event.getAction();
-			player.sendMessage("   event Action: " + oBlAct.toString());
-			player.sendMessage("     Power: " + block.getBlockPower() );
-			player.sendMessage("     State: " + block.getState() );
-			player.sendMessage("     Type: " + block.getType() );
+			//player.sendMessage("     Power: " + block.getBlockPower() );
+			//player.sendMessage("     State: " + block.getState() );
+			//player.sendMessage("     Type: " + block.getType() );
 
 			if(oBlAct == org.bukkit.event.block.Action.RIGHT_CLICK_BLOCK)
 			{
 				// rechte MausTaste  auf Kommandoblock
-				BlockState blState = event.getClickedBlock().getState();
-				CommandBlockExt cmdBlockExt = new CommandBlockExt(plugin, blState);
+				// BlockState blState = event.getClickedBlock().getState();
+				// CommandBlockExt cmdBlockExt = new CommandBlockExt(plugin, blState);
 			}
 			
 		}
