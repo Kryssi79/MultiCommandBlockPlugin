@@ -47,7 +47,10 @@ public class CommandBlockExt implements Listener
 			System.out.println(" MCBP plugin:  Kommandoblock  onBlockRedstone()  ");
 			System.out.println(" MCBP plugin:   BlockPower =  " + iPower);
 			m_CommandsString = m_CommandBlock.getCommand();
-			System.out.println(" MCBP plugin:    " + m_CommandsString);
+			if ( m_CommandsString.contains( "/MCB" ) )
+			{
+				System.out.println(" MCBP plugin:    " + m_CommandsString);
+			}
 		}
 	}
 	
