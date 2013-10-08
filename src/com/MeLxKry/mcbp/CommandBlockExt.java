@@ -27,7 +27,7 @@ public class CommandBlockExt
 	{
 		// oder über   org.bukkit.command.CommandExecutor  
 		m_CommandsString = m_CommandBlock.getCommand();
-		sendeBefehl("say hello World");
+		//sendeBefehl("say hello World");
 	}
 	
 	

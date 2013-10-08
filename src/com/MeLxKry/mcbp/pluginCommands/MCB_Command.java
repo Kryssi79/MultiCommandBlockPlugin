@@ -6,8 +6,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 
-
-
 public class MCB_Command  implements CommandExecutor  
 {
 
@@ -21,7 +19,7 @@ public class MCB_Command  implements CommandExecutor
 		}
 		else
 		{
-			cs.sendMessage(ChatColor.GREEN + "  strLbl:  " + strLabel );
+			cs.sendMessage(ChatColor.GREEN + "   strLbl :  " + strLabel );
 			
 			for(int iArg=0; iArg<args.length; iArg++)
 			{
@@ -29,8 +27,8 @@ public class MCB_Command  implements CommandExecutor
 			}
 			return true;
 		}
-		
 		// return true;
 	}
+	
 
 }

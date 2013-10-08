@@ -16,10 +16,3 @@ commands:
     description:  multi Commands
     usage: wenn Fehler
     permission: MCB.use
-    
-permissions:
-  MultiCommandBlock.edit:
-    description: Allows you to use /MultiCommandBlock
-    default: op
-        
-        

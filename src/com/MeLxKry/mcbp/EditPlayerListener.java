@@ -40,7 +40,6 @@ public class EditPlayerListener implements Listener
 		{
 			//   http://minecraft-de.gamepedia.com/Kommandoblock
 			org.bukkit.event.block.Action oBlAct = event.getAction();
-			player.sendMessage("     Class: " + block.getClass() + "  ");
 			player.sendMessage("   event Action: " + oBlAct.toString());
 			player.sendMessage("     Power: " + block.getBlockPower() );
 			player.sendMessage("     State: " + block.getState() );
