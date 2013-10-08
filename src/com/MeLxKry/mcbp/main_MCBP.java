@@ -27,7 +27,7 @@ public class main_MCBP extends JavaPlugin
         this.getCommand("MCB").setExecutor(new MCB_Command());
         
         // Events: 
-        getServer().getPluginManager().registerEvents(new EditPlayerListener(this), this);
+        // getServer().getPluginManager().registerEvents(new EditPlayerListener(this), this);
         getServer().getPluginManager().registerEvents(new CommandBlockExt(this), this);
    }
     

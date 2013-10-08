@@ -1,5 +1,6 @@
 package com.MeLxKry.mcbp;
 
+import java.io.IOException;
 import org.bukkit.block.*;
 import org.bukkit.command.CommandSender;
 import org.bukkit.event.*;
@@ -37,13 +38,17 @@ public class CommandBlockExt implements Listener
 		//wenn: am Block  redstone  gebaut/abgebaut   bzw. Signal sich ändert
 		Block block = event.getBlock();
 		int iBlockID = block.getTypeId();
+		int iPower = 0;
 		if ( !(iBlockID==137) )   { return; }
 		BlockState blState = event.getBlock().getState();
 		if (blState instanceof CommandBlock)   // Kommandoblock
 		{
 			m_CommandBlock = (CommandBlock)blState;
-			int iPower= block.getBlockPower();
-			if(iPower==0) { return; }
+			try
+			{
+				iPower = block.getBlockPower();
+				if(iPower==0) { return; }
+			}  catch  ( Exception exc ) { iPower = 0; return; }
 			System.out.println(" MCBP plugin:  Kommandoblock  onBlockRedstone()  ");
 			System.out.println(" MCBP plugin:   BlockPower =  " + iPower);
 			m_CommandsString = m_CommandBlock.getCommand();
