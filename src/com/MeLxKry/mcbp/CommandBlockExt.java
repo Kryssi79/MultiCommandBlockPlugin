@@ -41,6 +41,11 @@ public class CommandBlockExt
 	{
 		// org.bukkit.command.CommandExecutor  
 		// getServer().dispatchCommand(getServer().getConsoleSender(), "BEFEHL");
+		
+		//moin Kryssi falls das nicht funtzelt .. hier ne alternative:
+		//org.bukkit.command.PluginCommand cmd = plugin.getServer().getPluginCommand("say moin Kryssi");
+		//cmd.execute(player, command, arguments);
+		
 		plugin.getServer().dispatchCommand(oSender, sCmd);
 		return true;
 	}
