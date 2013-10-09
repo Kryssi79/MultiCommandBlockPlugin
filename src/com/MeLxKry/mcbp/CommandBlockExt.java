@@ -15,12 +15,14 @@ public class CommandBlockExt implements Listener
 	main_MCBP plugin;
 	CommandBlock m_CommandBlock;  //  = (CommandBlock)state    = BlockState state
 	String m_CommandsString;
+	CommandParser m_parser;
 	boolean m_bLogtoConsole = false;
 	
 	
 	public CommandBlockExt(main_MCBP plugin) 
 	{
 		this.plugin = plugin;
+		this.m_parser = new CommandParser();
 	}
 	
 	
@@ -69,13 +71,13 @@ public class CommandBlockExt implements Listener
 	
 	private String[] getCommands(String sCommandsString)
 	{
-		String[] m_Commands = new String[1];
 		// oder über   org.bukkit.command.CommandExecutor  
-		m_CommandsString = sCommandsString;   // m_CommandBlock.getCommand();
 		//sendeBefehl("say hello World");
-		
 		//   =>   weiter an    CommandParser()    mit  return String[]
-		return m_Commands;
+		m_CommandsString = sCommandsString;
+		
+		m_parser.Parse(sCommandsString);
+		return m_parser.getCommands();
 	}
 	
 	
