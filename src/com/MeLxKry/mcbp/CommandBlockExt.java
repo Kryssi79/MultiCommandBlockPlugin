@@ -1,6 +1,7 @@
 package com.MeLxKry.mcbp;
 
 import java.io.IOException;
+
 import org.bukkit.block.*;
 import org.bukkit.command.CommandSender;
 import org.bukkit.event.*;
@@ -21,15 +22,6 @@ public class CommandBlockExt implements Listener
 		this.plugin = plugin;
 	}
 	
-	public CommandBlockExt(main_MCBP plugin, BlockState state) 
-	{
-		this.plugin = plugin;
-		if (state instanceof CommandBlock)
-		{
-			m_CommandBlock = (CommandBlock)state;
-		}
-		getCommand();
-	}
 	
 		
 	@EventHandler(priority=EventPriority.NORMAL )
@@ -55,6 +47,8 @@ public class CommandBlockExt implements Listener
 			if ( m_CommandsString.contains( "/MCB" ) )
 			{
 				System.out.println(" MCBP plugin:    " + m_CommandsString);
+				//  =>  weiter an   CommandParser()
+				getCommands(m_CommandsString);
 			}
 		}
 	}
@@ -71,12 +65,18 @@ public class CommandBlockExt implements Listener
 	}
 	
 	
-	private void getCommand()
+	private String[] getCommands(String sCommandsString)
 	{
+		String[] m_Commands = new String[1];
 		// oder über   org.bukkit.command.CommandExecutor  
 		m_CommandsString = m_CommandBlock.getCommand();
 		//sendeBefehl("say hello World");
+		
+		//   =>   weiter an    CommandParser()
+		return m_Commands;
 	}
+	
+	
 	
 	
 	private boolean sendeBefehl(String sCmd)
