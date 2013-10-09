@@ -37,9 +37,11 @@ public class CommandParser {
 		checkerStr = null;
 	}
 	
+	
 	public String[] getCommands() {
 		return m_CommandParts;
 	}
+	
 	
 	//Destructor alternative unter Java
 	@Override

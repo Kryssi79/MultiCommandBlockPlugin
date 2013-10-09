@@ -57,6 +57,7 @@ public class CommandBlockExt implements Listener
 			{	
 				sendeBefehl(commands[i].trim());
 				System.out.println("Send Command: " + commands[i].trim());
+				//sendeBefehl(m_CommandBlock, commands[i].trim());
 			}
 		}
 	}
