@@ -15,6 +15,7 @@ public class CommandBlockExt implements Listener
 	main_MCBP plugin;
 	CommandBlock m_CommandBlock;  //  = (CommandBlock)state    = BlockState state
 	String m_CommandsString;
+	boolean m_bLogtoConsole = false;
 	
 	
 	public CommandBlockExt(main_MCBP plugin) 
@@ -47,6 +48,7 @@ public class CommandBlockExt implements Listener
 			if ( m_CommandsString.contains( "/MCB" ) )
 			{
 				System.out.println(" MCBP plugin:    " + m_CommandsString);
+				// logTo(String sLogStr)
 				//  =>  weiter an   CommandParser()
 				getCommands(m_CommandsString);
 			}
@@ -69,10 +71,10 @@ public class CommandBlockExt implements Listener
 	{
 		String[] m_Commands = new String[1];
 		// oder über   org.bukkit.command.CommandExecutor  
-		m_CommandsString = m_CommandBlock.getCommand();
+		m_CommandsString = sCommandsString;   // m_CommandBlock.getCommand();
 		//sendeBefehl("say hello World");
 		
-		//   =>   weiter an    CommandParser()
+		//   =>   weiter an    CommandParser()    mit  return String[]
 		return m_Commands;
 	}
 	
@@ -98,6 +100,12 @@ public class CommandBlockExt implements Listener
 		return true;
 	}
 	
+	
+	//  TODO:  
+	private void logTo(String sLogStr)
+	{
+		// boolean m_bLogtoConsole = false;
+	}
 	
 	
 }
