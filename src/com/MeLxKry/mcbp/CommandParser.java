@@ -22,7 +22,7 @@ public class CommandParser {
 			System.out.println(checkerStr);
 			
 			m_CommandParts = checkerStr.split(";", -1);
-			if (m_CommandParts==null || m_CommandParts.length==0)  {
+			if (m_CommandParts==null || m_CommandParts.length==1)  {
 				//wenn kein semikolon vorhanden dann nimm den ganzen string auf platz 0 ;)
 				m_CommandParts = new String[1];
 				m_CommandParts[0] = CommandStr;
