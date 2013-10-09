@@ -7,13 +7,11 @@ public class CommandParser {
 	{
 		String lowerstring = CommandStr.toLowerCase(); // only for checking the first Characters
 		m_CommandParts = new String[0];
-		String checkStr1 = lowerstring.substring(0, 4);
-		String checkStr2 = lowerstring.substring(0, 3);
+		String checkerStr = "";
 
-		if (checkStr1.equals("/mcb") ||
-			checkStr2.equals("mcb"))
+		if (lowerstring.substring(0, 4).equals("/mcb") ||
+			lowerstring.substring(0, 3).equals("mcb"))
 		{
-			String checkerStr = "";
 			if (CommandStr.substring(0,1).equals("/"))
 			{
 				checkerStr = CommandStr.replace("/", "");
@@ -35,6 +33,8 @@ public class CommandParser {
 			// Nix f�r mich ;)
 			 System.out.println("Parse -> No mcb Command found");
 		}
+		lowerstring = null;
+		checkerStr = null;
 	}
 	
 	public String[] getCommands() {
