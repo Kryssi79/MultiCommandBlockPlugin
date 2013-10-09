@@ -30,7 +30,7 @@ public class CommandBlockExt implements Listener
 	@EventHandler(priority=EventPriority.NORMAL )
 	public void onBlockRedstone(BlockRedstoneEvent event) 
 	{
-		//wenn: am Block  redstone  gebaut/abgebaut   bzw. Signal sich ändert
+		//wenn: am Block  redstone  gebaut/abgebaut   bzw. Signal sich ï¿½ndert
 		Block block = event.getBlock();
 		int iBlockID = block.getTypeId();
 		int iPower = 0;
@@ -46,13 +46,17 @@ public class CommandBlockExt implements Listener
 			}  catch  ( Exception exc ) { iPower = 0; return; }
 			System.out.println(" MCBP plugin:  Kommandoblock  onBlockRedstone()  ");
 			System.out.println(" MCBP plugin:   BlockPower =  " + iPower);
+			
 			m_CommandsString = m_CommandBlock.getCommand();
-			if ( m_CommandsString.contains( "/MCB" ) )
-			{
-				System.out.println(" MCBP plugin:    " + m_CommandsString);
-				// logTo(String sLogStr)
-				//  =>  weiter an   CommandParser()
-				getCommands(m_CommandsString);
+			
+			System.out.println(" MCBP plugin:    " + m_CommandsString);
+			// logTo(String sLogStr)
+			//  =>  weiter an   CommandParser()
+			String[] commands = getCommands(m_CommandsString);
+			for (int i=0; i < commands.length;i++)
+			{	
+				sendeBefehl(commands[i]);
+				System.out.println("Send Command: " + commands[i]);
 			}
 		}
 	}
@@ -71,10 +75,10 @@ public class CommandBlockExt implements Listener
 	
 	private String[] getCommands(String sCommandsString)
 	{
-		// oder über   org.bukkit.command.CommandExecutor  
+		// oder ï¿½ber   org.bukkit.command.CommandExecutor  
 		//sendeBefehl("say hello World");
 		//   =>   weiter an    CommandParser()    mit  return String[]
-		m_CommandsString = sCommandsString;
+		//m_CommandsString = sCommandsString;
 		
 		m_parser.Parse(sCommandsString);
 		return m_parser.getCommands();
@@ -94,7 +98,7 @@ public class CommandBlockExt implements Listener
 		// org.bukkit.command.CommandExecutor  
 		// getServer().dispatchCommand(getServer().getConsoleSender(), "BEFEHL");
 		
-		//für  eigene/interne   Plugin Commands
+		//fï¿½r  eigene/interne   Plugin Commands
 		//org.bukkit.command.PluginCommand cmd = plugin.getServer().getPluginCommand("say moin Kryssi");
 		//cmd.execute(player, command, arguments);
 		

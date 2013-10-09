@@ -6,27 +6,34 @@ public class CommandParser {
 	public void Parse(String CommandStr)
 	{
 		String lowerstring = CommandStr.toLowerCase(); // only for checking the first Characters
-		if (lowerstring.substring(0, 3) == "mcb" || 
-			lowerstring.substring(0, 4) == "/mcb")
+		m_CommandParts = new String[0];
+		String checkStr1 = lowerstring.substring(0, 4);
+		String checkStr2 = lowerstring.substring(0, 3);
+
+		if (checkStr1.equals("/mcb") ||
+			checkStr2.equals("mcb"))
 		{
-			if (CommandStr.substring(0,1) == "/")
+			String checkerStr = "";
+			if (CommandStr.substring(0,1).equals("/"))
 			{
-				CommandStr.replace("/", "");
+				checkerStr = CommandStr.replace("/", "");
 			}
-			CommandStr.replace(lowerstring.substring(0, 3), ""); // delete mcb
+			checkerStr = checkerStr.replace(checkerStr.substring(0, 3), ""); // delete mcb
+			System.out.println(checkerStr);
 			
-			m_CommandParts = CommandStr.split(";");
-			if (m_CommandParts.length == 0)  {
+			m_CommandParts = checkerStr.split(";", -1);
+			if (m_CommandParts==null || m_CommandParts.length==0)  {
 				//wenn kein semikolon vorhanden dann nimm den ganzen string auf platz 0 ;)
 				m_CommandParts = new String[1];
-				m_CommandParts[0] = CommandStr;}
-			else{
-				System.out.println("Parse -> MCB Command with empty Parameters found");
-			}	
+				m_CommandParts[0] = CommandStr;
+				System.out.println("Bin hier:");
+			    System.out.println("Parse -> MCB Command with empty Parameters found");
+			}
+		    System.out.println("Commands in Array: " + m_CommandParts.length);
 		}
 		else
 		{
-			// Nix für mich ;)
+			// Nix fï¿½r mich ;)
 			 System.out.println("Parse -> No mcb Command found");
 		}
 	}
