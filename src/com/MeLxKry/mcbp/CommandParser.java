@@ -26,7 +26,6 @@ public class CommandParser {
 				//wenn kein semikolon vorhanden dann nimm den ganzen string auf platz 0 ;)
 				m_CommandParts = new String[1];
 				m_CommandParts[0] = CommandStr;
-				System.out.println("Bin hier:");
 			    System.out.println("Parse -> MCB Command with empty Parameters found");
 			}
 		    System.out.println("Commands in Array: " + m_CommandParts.length);

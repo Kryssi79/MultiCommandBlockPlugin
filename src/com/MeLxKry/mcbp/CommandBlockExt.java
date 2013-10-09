@@ -55,8 +55,8 @@ public class CommandBlockExt implements Listener
 			String[] commands = getCommands(m_CommandsString);
 			for (int i=0; i < commands.length;i++)
 			{	
-				sendeBefehl(commands[i]);
-				System.out.println("Send Command: " + commands[i]);
+				sendeBefehl(commands[i].trim());
+				System.out.println("Send Command: " + commands[i].trim());
 			}
 		}
 	}
