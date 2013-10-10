@@ -1,16 +1,16 @@
 package com.MeLxKry.mcbp;
 
-import java.io.IOException;
-
-import org.bukkit.block.*;
+import org.bukkit.block.Block;
+import org.bukkit.block.BlockState;
+import org.bukkit.block.CommandBlock;
 import org.bukkit.command.CommandSender;
-import org.bukkit.event.*;
-import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.BlockRedstoneEvent;
 import org.bukkit.event.block.SignChangeEvent;
 
 
-public class CommandBlockExt implements Listener 
+public class CommandBlockExt //  implements Listener   , CommandSender
 {
 	main_MCBP plugin;
 	CommandBlock m_CommandBlock;  //  = (CommandBlock)state    = BlockState state
@@ -26,8 +26,7 @@ public class CommandBlockExt implements Listener
 	}
 	
 	
-		
-	@EventHandler(priority=EventPriority.NORMAL )
+	
 	public void onBlockRedstone(BlockRedstoneEvent event) 
 	{
 		//wenn: am Block  redstone  gebaut/abgebaut   bzw. Signal sich �ndert
@@ -55,9 +54,10 @@ public class CommandBlockExt implements Listener
 			String[] commands = getCommands(m_CommandsString);
 			for (int i=0; i < commands.length;i++)
 			{	
+				//CommandSender oSender = (CommandSender) m_CommandBlock.getBlock();
+				//BlockCommandSender bcs = (BlockCommandSender)m_CommandBlock;
 				sendeBefehl(commands[i].trim());
-				System.out.println("Send Command: " + commands[i].trim());
-				//sendeBefehl(m_CommandBlock, commands[i].trim());
+				System.out.println("send Command: " + commands[i].trim());
 			}
 		}
 	}
@@ -75,12 +75,7 @@ public class CommandBlockExt implements Listener
 	
 	
 	private String[] getCommands(String sCommandsString)
-	{
-		// oder �ber   org.bukkit.command.CommandExecutor  
-		//sendeBefehl("say hello World");
-		//   =>   weiter an    CommandParser()    mit  return String[]
-		//m_CommandsString = sCommandsString;
-		
+	{	
 		m_parser.Parse(sCommandsString);
 		return m_parser.getCommands();
 	}
@@ -96,13 +91,7 @@ public class CommandBlockExt implements Listener
 	
 	private boolean sendeBefehl(CommandSender oSender, String sCmd)
 	{
-		// org.bukkit.command.CommandExecutor  
-		// getServer().dispatchCommand(getServer().getConsoleSender(), "BEFEHL");
-		
-		//f�r  eigene/interne   Plugin Commands
-		//org.bukkit.command.PluginCommand cmd = plugin.getServer().getPluginCommand("say moin Kryssi");
-		//cmd.execute(player, command, arguments);
-		
+		//Bukkit.dispatchCommand(oSender, sCmd);
 		plugin.getServer().dispatchCommand(oSender, sCmd);
 		return true;
 	}
