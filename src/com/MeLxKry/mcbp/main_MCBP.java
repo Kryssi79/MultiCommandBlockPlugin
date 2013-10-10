@@ -40,6 +40,7 @@ public class main_MCBP extends JavaPlugin
         // Events: 
         // getServer().getPluginManager().registerEvents(new EditPlayerListener(this), this);
         // getServer().getPluginManager().registerEvents(new CommandBlockExt(this), this);
+        //int id = Bukkit.getScheduler().scheduleAsyncDelayedTask(this, new Runnable() { public void run() {System.out.println("1 min!"); } },60 * 20);
    }
     
    
@@ -90,6 +91,7 @@ public class main_MCBP extends JavaPlugin
 	}
 	
 	
+	// https://board.nitrado.net/community-area/programmierung/hilfe/49382/explosionen-erzeugen-wait/
 	private boolean sendeBefehl(String sCmd)
 	{
 		return sendeBefehl(getServer().getConsoleSender(), sCmd);
