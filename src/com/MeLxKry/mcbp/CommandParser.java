@@ -41,6 +41,7 @@ public class CommandParser {
 				}
 				newParsedCommand.setCommand(intervalSplittArray[0].trim()); // set Command
 				m_CommandParts[i] = newParsedCommand;
+				// TODO:  sowas wie  newParsedCommand.dispose();
 			}
 		    System.out.println("Commands in Array: " + m_CommandParts.length);
 		}
