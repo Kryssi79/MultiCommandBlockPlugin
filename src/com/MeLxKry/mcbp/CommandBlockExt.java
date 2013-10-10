@@ -51,13 +51,19 @@ public class CommandBlockExt //  implements Listener   , CommandSender
 			System.out.println(" MCBP plugin:    " + m_CommandsString);
 			// logTo(String sLogStr)
 			//  =>  weiter an   CommandParser()
-			String[] commands = getCommands(m_CommandsString);
+			ParsedCommand[] commands = getCommands(m_CommandsString);
 			for (int i=0; i < commands.length;i++)
 			{	
 				//CommandSender oSender = (CommandSender) m_CommandBlock.getBlock();
 				//BlockCommandSender bcs = (BlockCommandSender)m_CommandBlock;
-				sendeBefehl(commands[i].trim());
-				System.out.println("send Command: " + commands[i].trim());
+				sendeBefehl(commands[i].getCommand());
+				System.out.println("send Command: " + commands[i].getCommand());
+				try {
+					Thread.sleep(commands[i].getInterval());
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 	}
@@ -74,7 +80,7 @@ public class CommandBlockExt //  implements Listener   , CommandSender
 	}
 	
 	
-	private String[] getCommands(String sCommandsString)
+	private ParsedCommand[] getCommands(String sCommandsString)
 	{	
 		m_parser.Parse(sCommandsString);
 		return m_parser.getCommands();

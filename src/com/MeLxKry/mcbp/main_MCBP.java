@@ -70,11 +70,17 @@ public class main_MCBP extends JavaPlugin
 					System.out.println("     ");
 					System.out.println(" BlockCommandSender sendet ... ");
 					System.out.println("     " + m_CommandsString );
-					String[] commands = getCommands(m_CommandsString);
+					ParsedCommand[] commands = getCommands(m_CommandsString);
 					for (int i=0; i < commands.length;i++)
 					{	
-						sendeBefehl(blockCmdSender, commands[i].trim());
-						System.out.println("send Command: " + commands[i].trim());
+						sendeBefehl(blockCmdSender, commands[i].getCommand());
+						try {
+							Thread.sleep(commands[i].getInterval());
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						System.out.println("send Command: " +  commands[i].getCommand());
 					}
 				}
 				return true;
@@ -84,7 +90,7 @@ public class main_MCBP extends JavaPlugin
 	}
     
     
-	private String[] getCommands(String sCommandsString)
+	private ParsedCommand[] getCommands(String sCommandsString)
 	{	
 		m_parser.Parse(sCommandsString);
 		return m_parser.getCommands();

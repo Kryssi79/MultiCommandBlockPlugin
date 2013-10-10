@@ -1,14 +1,16 @@
 package com.MeLxKry.mcbp;
 
 public class CommandParser {
-	String[] m_CommandParts;
+	ParsedCommand[] m_CommandParts;
 
 	public void Parse(String CommandStr)
 	{
+		String[] commands = new String[0];
 		String lowerstring = CommandStr.toLowerCase(); // only for checking the first Characters
-		m_CommandParts = new String[0];
+		m_CommandParts = new ParsedCommand[0];
 		String checkerStr = "";
-
+		String[] intervalSplittArray = new String[0];
+		
 		if (lowerstring.substring(0, 4).equals("/mcb") ||
 			lowerstring.substring(0, 3).equals("mcb"))
 		{
@@ -19,12 +21,24 @@ public class CommandParser {
 			checkerStr = checkerStr.replace(checkerStr.substring(0, 3), ""); // delete mcb
 			System.out.println(checkerStr);
 			
-			m_CommandParts = checkerStr.split(";", -1);
+
+			commands = checkerStr.split(";", -1);
 			if (m_CommandParts==null || m_CommandParts.length==1)  {
 				//wenn kein semikolon vorhanden dann nimm den ganzen string auf platz 0 ;)
-				m_CommandParts = new String[1];
-				m_CommandParts[0] = checkerStr.trim();
+				commands = new String[1];
+				commands[0] = checkerStr.trim();
 			    System.out.println("Parse -> MCB Command with empty Parameters found");
+			}
+			
+			for(int i =0; i < commands.length; i++)
+			{
+				ParsedCommand newParsedCommand = new ParsedCommand();
+				intervalSplittArray = commands[i].split("#");
+				if (intervalSplittArray.length == 2)
+				{
+					newParsedCommand.setInterval(Integer.parseInt(intervalSplittArray[1])); // set Interval
+				}
+				newParsedCommand.setCommand(intervalSplittArray[0].trim()); // set Command
 			}
 		    System.out.println("Commands in Array: " + m_CommandParts.length);
 		}
@@ -35,10 +49,12 @@ public class CommandParser {
 		}
 		lowerstring = null;
 		checkerStr = null;
+		commands = null;
+		intervalSplittArray = null;
 	}
 	
 	
-	public String[] getCommands() {
+	public ParsedCommand[] getCommands() {
 		return m_CommandParts;
 	}
 	
@@ -50,3 +66,4 @@ public class CommandParser {
 		super.finalize();
 	}
 }
+
