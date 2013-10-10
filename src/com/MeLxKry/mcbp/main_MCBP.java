@@ -72,7 +72,7 @@ public class main_MCBP extends JavaPlugin
 					String[] commands = getCommands(m_CommandsString);
 					for (int i=0; i < commands.length;i++)
 					{	
-						sendeBefehl(cs, commands[i].trim());
+						sendeBefehl(blockCmdSender, commands[i].trim());
 						System.out.println("send Command: " + commands[i].trim());
 					}
 				}
