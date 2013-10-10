@@ -1,5 +1,12 @@
 package com.MeLxKry.mcbp;
 
+import java.security.PrivateKey;
+
+import org.bukkit.Location;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
+
+
 public class CommandParser {
 	ParsedCommand[] m_CommandParts;
 
@@ -56,6 +63,20 @@ public class CommandParser {
 		intervalSplittArray = null;
 	}
 	
+	
+	//  TODO:  für @p  @a  @r  - kann auch ausgelagert werden
+	protected String replacePlatzhalter(String CommandStr)
+	{
+		String replaced="";
+		// PLayerListe
+		return replaced;
+	}
+	
+	//Entfernung
+	protected double getDistance(Location vLoc1, Location vLoc2)
+	{
+		return  vLoc1.distance(vLoc2);
+	}
 	
 	public ParsedCommand[] getCommands() {
 		return m_CommandParts;
