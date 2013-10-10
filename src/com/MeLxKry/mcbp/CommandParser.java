@@ -30,6 +30,7 @@ public class CommandParser {
 			    System.out.println("Parse -> MCB Command with empty Parameters found");
 			}
 			
+			m_CommandParts = new ParsedCommand[commands.length];
 			for(int i =0; i < commands.length; i++)
 			{
 				ParsedCommand newParsedCommand = new ParsedCommand();
@@ -39,6 +40,7 @@ public class CommandParser {
 					newParsedCommand.setInterval(Integer.parseInt(intervalSplittArray[1])); // set Interval
 				}
 				newParsedCommand.setCommand(intervalSplittArray[0].trim()); // set Command
+				m_CommandParts[i] = newParsedCommand;
 			}
 		    System.out.println("Commands in Array: " + m_CommandParts.length);
 		}
