@@ -75,7 +75,7 @@ public class main_MCBP extends JavaPlugin
 					{	
 						sendeBefehl(blockCmdSender, commands[i].getCommand());
 						try {
-							Thread.sleep(5);  // commands[i].getInterval()
+							Thread.sleep(commands[i].getInterval());  // commands[i].getInterval()
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();

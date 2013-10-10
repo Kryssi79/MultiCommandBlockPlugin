@@ -2,7 +2,7 @@ package com.MeLxKry.mcbp;
 
 public class ParsedCommand
 {
-	protected int m_Interval = 5; // standard value
+	protected int m_Interval = 40; // standard value
 	protected String m_CommandLine;
 	
 	public void setInterval(int Interval)
