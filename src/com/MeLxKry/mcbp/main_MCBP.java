@@ -34,7 +34,6 @@ public class main_MCBP extends JavaPlugin
         ConfigSpeichern();
         
         // Commands: 
-        // this.getCommand("mcbTest").setExecutor(new testCommand());
         // this.getCommand("MCB").setExecutor(new MCB_Command());
         
         // Events: 
@@ -77,7 +76,6 @@ public class main_MCBP extends JavaPlugin
 						try {
 							Thread.sleep(commands[i].getInterval());  // commands[i].getInterval()
 						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 					}

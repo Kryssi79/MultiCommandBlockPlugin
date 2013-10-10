@@ -1,5 +1,5 @@
 name: MultiCommandBlock
-version: 0.5
+version: 0.51
 description: Multi-Line  and Multi-Command  Block for Bukkit Server
 authors: [MemoryLeakX, Kryssi79]
 
@@ -8,10 +8,6 @@ main: com.MeLxKry.mcbp.main_MCBP
 
 
 commands:
-  mcbTest:
-    description:  CommandBlock Test
-    usage: wenn Fehler
-    permission: mcbTest.use
   MCB:
     description:  multi Commands
     usage: wenn Fehler
