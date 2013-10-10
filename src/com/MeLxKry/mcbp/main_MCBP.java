@@ -75,12 +75,11 @@ public class main_MCBP extends JavaPlugin
 					{	
 						sendeBefehl(blockCmdSender, commands[i].getCommand());
 						try {
-							Thread.sleep(commands[i].getInterval());
+							Thread.sleep(5);  // commands[i].getInterval()
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-						System.out.println("send Command: " +  commands[i].getCommand());
 					}
 				}
 				return true;
@@ -105,6 +104,7 @@ public class main_MCBP extends JavaPlugin
 	
 	private boolean sendeBefehl(CommandSender oSender, String sCmd)
 	{
+		System.out.println("send Command: " +  sCmd);
 		//Bukkit.dispatchCommand(oSender, sCmd);
 		getServer().dispatchCommand(oSender, sCmd);
 		return true;
