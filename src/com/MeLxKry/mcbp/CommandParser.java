@@ -64,7 +64,7 @@ public class CommandParser {
 	}
 	
 	
-	//  TODO:  für @p  @a  @r  - kann auch ausgelagert werden
+	//  TODO:  für @p  @a  @r  - kann auch ausgelagert werden / oder mit Player als Sender testen
 	protected String replacePlatzhalter(String CommandStr)
 	{
 		String replaced="";
