@@ -61,12 +61,15 @@ public class CommandParser {
 		boolean filled = false;
 		Player[] playerList = m_plugin.getServer().getOnlinePlayers(); // alle Player
 		
+		ParsedCommand parsedCommandforInterval = parseInterval(CommandStr);
+		CommandStr = parsedCommandforInterval.getCommand();
+		
 		// random Online Player
 		if (CommandStr.contains("@r")){
 			filled = true;
 			int rand = random_range(0,playerList.length - 1);
 			ParsedCommand newParsedCommand = new ParsedCommand();
-			newParsedCommand.setInterval(parseInterval(CommandStr));
+			newParsedCommand.setInterval(parsedCommandforInterval.getInterval());
 			String newCommand = CommandStr.replace("@r", playerList[rand].getDisplayName());
 			newParsedCommand.setCommand(newCommand);
 			m_CommandParts.add(newParsedCommand);
@@ -78,7 +81,7 @@ public class CommandParser {
 				ParsedCommand newParsedCommand = new ParsedCommand();
 				
 				// Interval Berechnung = BaseCommand interval / Menge der Commands
-				int interval = parseInterval(CommandStr);
+				int interval = parsedCommandforInterval.getInterval();
 				interval = interval / playerList.length;
 				
 				newParsedCommand.setInterval(interval);
@@ -109,7 +112,7 @@ public class CommandParser {
 				if (johnDoe != null){
 					filled = true;
 					ParsedCommand newParsedCommand = new ParsedCommand();
-					newParsedCommand.setInterval(parseInterval(CommandStr));
+					newParsedCommand.setInterval(parsedCommandforInterval.getInterval());
 					String newCommand = CommandStr.replace("@p", johnDoe.getDisplayName());
 					newParsedCommand.setCommand(newCommand);
 					m_CommandParts.add(newParsedCommand);
@@ -119,23 +122,25 @@ public class CommandParser {
 		// if never filled !
 		if (!filled){
 			ParsedCommand newParsedCommand = new ParsedCommand();
-			newParsedCommand.setInterval(parseInterval(CommandStr));
+			newParsedCommand.setInterval(newParsedCommand.getInterval());
 			newParsedCommand.setCommand(CommandStr);
 			m_CommandParts.add(newParsedCommand);
 		}
+		parsedCommandforInterval = null;
+		playerList = null;
 	}
 	
-	protected int parseInterval(String CommandStr)
+	protected ParsedCommand parseInterval(String CommandStr)
 	{
-		int out = 40;
+		ParsedCommand pcommand = new ParsedCommand();
 		String[] intervalSplittArray = new String[0];
 		intervalSplittArray = CommandStr.split("#");
 		if (intervalSplittArray.length == 2){
-			out = Integer.parseInt(intervalSplittArray[1]); // set Interval
+			pcommand.setInterval(Integer.parseInt(intervalSplittArray[1])); // set Interval
 		}
 		// override CommandStr Reference
-		CommandStr =  intervalSplittArray[0];
-		return out;
+		pcommand.setCommand(intervalSplittArray[0].trim());
+		return pcommand;
 	}
 	
 	private int random_range(int x1, int x2) {
