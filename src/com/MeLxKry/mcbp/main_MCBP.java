@@ -10,6 +10,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import com.MeLxKry.mcbp.parser.CommandParser;
 import com.MeLxKry.mcbp.parser.ParsedCommand;
@@ -71,13 +72,17 @@ public class main_MCBP extends JavaPlugin
 					System.out.println(" BlockCommandSender sendet ... ");
 					System.out.println("     " + m_CommandsString );
 					ParsedCommand[] commands = getCommands(m_CommandsString, block);
+					
 					for (int i=0; i < commands.length;i++)
 					{	
-				        int id = Bukkit.getScheduler().scheduleSyncDelayedTask(this, new Runnable() 
-				        {
-				        	public void run() {  //hier rein:  sendeBefehl 
-				        	}
-				        }, commands[i].getInterval() * 20);
+						String command = commands[i].getCommand();
+						
+						new BukkitRunnable() {
+						    @Override
+						    public void run() {
+						    	//sendeBefehl(blockCmdSender, commands[i].getCommand());
+						    }
+						}.runTaskTimer(this, commands[i].getInterval(), 20);
 				        // sendeBefehl(blockCmdSender, commands[i].getCommand());
 				        
 						/*
@@ -94,7 +99,6 @@ public class main_MCBP extends JavaPlugin
     	}
     	return false;
 	}
-    
     
 	private ParsedCommand[] getCommands(String sCommandsString, Block fromBlock)
 	{	
