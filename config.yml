@@ -1,12 +1,3 @@
 MultiCommandBlock:    
-    ignorecreative: true
-    
-    invertmouse: false
-    
-    log:
-        filename: MultiCommandBlock.log
-        
-    commands:
-        logtofile: false
-        logtoconsole: false  
-		
+    logtofile: false
+    logtoconsole: true
