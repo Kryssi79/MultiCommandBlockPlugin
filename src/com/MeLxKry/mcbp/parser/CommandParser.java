@@ -73,7 +73,7 @@ public class CommandParser {
 		if (CommandStr.contains("@r")){
 			if(bLogToConsole==true)  { System.out.println("parsePlayerShortcuts -> @r"); } 
 			filled = true;
-			int rand = Helper.random_range(0,playerList.length - 1);
+			int rand = Helper.nextRandomInt(playerList.length - 1);
 			ParsedCommand newParsedCommand = new ParsedCommand();
 			newParsedCommand.setInterval(parsedCommandforInterval.getInterval());
 			String newCommand = CommandStr.replace("@r", playerList[rand].getDisplayName());

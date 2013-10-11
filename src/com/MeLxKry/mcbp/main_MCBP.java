@@ -20,7 +20,7 @@ public class main_MCBP extends JavaPlugin
 	public PluginManager pluginMan;
 	String m_CommandsString;
 	CommandParser m_parser;
-	boolean bLogToConsole = false;	
+	public boolean bLogToConsole = false;	
 	
     
     @Override
@@ -54,7 +54,7 @@ public class main_MCBP extends JavaPlugin
     	{
 	    	if(args.length == 0)  //  nur  /MCB  ohne Params
 	    	{
-	    		if(bLogToConsole==true)  { System.out.println("  MCB   sendet ...   "); }
+	    		if(bLogToConsole==true)  { System.out.println("  MCB  is ok ...   "); }
 	    		return true;
 	    	}
 	    	else
