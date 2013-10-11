@@ -78,7 +78,13 @@ public class main_MCBP extends JavaPlugin
 					{	
 						final String fiStr = commands[i].getCommand();
 						int iIntTime = 0;
-						iIntTime = commands[i].getInterval() * (i*20);
+						if(i < 1){
+							iIntTime = commands[i].getInterval() * (i*20);
+						}
+						else{
+							iIntTime = commands[i].getInterval() * ((i-1)*20);
+						}
+						
 				        Bukkit.getScheduler().scheduleSyncDelayedTask(this, new Runnable() 
 				        {
 				        	public void run() 
