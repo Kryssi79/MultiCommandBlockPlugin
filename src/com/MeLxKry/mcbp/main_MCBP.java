@@ -22,7 +22,7 @@ public class main_MCBP extends JavaPlugin
 	public PluginManager pluginMan;
 	String m_CommandsString;
 	CommandParser m_parser;
-	boolean m_bLogtoConsole = false;	
+	boolean bLogToConsole = false;	
 	
     
     @Override
@@ -34,6 +34,7 @@ public class main_MCBP extends JavaPlugin
         System.out.println("  Parser OK  ");
         
         ConfigSpeichern();
+        bLogToConsole = this.getConfig().getBoolean("MultiCommandBlock.logtoconsole");
         
         // Commands: 
         // this.getCommand("MCB").setExecutor(new MCB_Command());
@@ -57,14 +58,14 @@ public class main_MCBP extends JavaPlugin
     	{
 	    	if(args.length == 0)  //  nur  /MCB  ohne Params
 	    	{
-	    		System.out.println("  MCB   sendet ...   ");
+	    		if(bLogToConsole==true)  { System.out.println("  MCB   sendet ...   "); }
 	    		return true;
 	    	}
 	    	else
 			{
 				if ((cs instanceof BlockCommandSender)) 
 				{
-					BlockCommandSender blockCmdSender = (BlockCommandSender)cs;
+					final BlockCommandSender blockCmdSender = (BlockCommandSender)cs;
 					Block block = blockCmdSender.getBlock();
 					CommandBlock m_CommandBlock = (CommandBlock)block.getState();
 					m_CommandsString = m_CommandBlock.getCommand();
@@ -75,15 +76,15 @@ public class main_MCBP extends JavaPlugin
 					
 					for (int i=0; i < commands.length;i++)
 					{	
-						String command = commands[i].getCommand();
-						
-						new BukkitRunnable() {
-						    @Override
-						    public void run() {
-						    	//sendeBefehl(blockCmdSender, commands[i].getCommand());
-						    }
-						}.runTaskTimer(this, commands[i].getInterval(), 20);
-				        // sendeBefehl(blockCmdSender, commands[i].getCommand());
+						final String fiStr = commands[i].getCommand();
+				        Bukkit.getScheduler().scheduleSyncDelayedTask(this, new Runnable() 
+				        {
+				        	public void run() 
+				        	{
+				        		//hier rein:  sendeBefehl 
+				        		sendeBefehl(blockCmdSender, fiStr);
+				        	}
+				        }, commands[i].getInterval() );   //   * 20  ????
 				        
 						/*
 						try {
