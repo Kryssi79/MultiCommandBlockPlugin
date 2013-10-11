@@ -41,8 +41,6 @@ public class main_MCBP extends JavaPlugin
         
         // Events: 
         // getServer().getPluginManager().registerEvents(new EditPlayerListener(this), this);
-        // getServer().getPluginManager().registerEvents(new CommandBlockExt(this), this);
-        //int id = Bukkit.getScheduler().scheduleAsyncDelayedTask(this, new Runnable() { public void run() {System.out.println("1 min!"); } },60 * 20);
    }
     
    
@@ -69,9 +67,9 @@ public class main_MCBP extends JavaPlugin
 					Block block = blockCmdSender.getBlock();
 					CommandBlock m_CommandBlock = (CommandBlock)block.getState();
 					m_CommandsString = m_CommandBlock.getCommand();
-					System.out.println("     ");
-					System.out.println(" BlockCommandSender sendet ... ");
-					System.out.println("     " + m_CommandsString );
+					if(bLogToConsole==true)  { System.out.println("     "); }
+					if(bLogToConsole==true)  { System.out.println(" BlockCommandSender sendet ... "); }
+					if(bLogToConsole==true)  { System.out.println("     " + m_CommandsString );       } 
 					ParsedCommand[] commands = getCommands(m_CommandsString, block);
 					
 					int iVorGesTime = 0;
@@ -127,7 +125,7 @@ public class main_MCBP extends JavaPlugin
 	
 	private boolean sendeBefehl(CommandSender oSender, String sCmd)
 	{
-		System.out.println("send Command: " +  sCmd);
+		if(bLogToConsole==true)  {  System.out.println("send Command: " +  sCmd); }
 		//Bukkit.dispatchCommand(oSender, sCmd);
 		getServer().dispatchCommand(oSender, sCmd);
 		return true;
