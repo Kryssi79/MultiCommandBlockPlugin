@@ -73,10 +73,12 @@ public class main_MCBP extends JavaPlugin
 					ParsedCommand[] commands = getCommands(m_CommandsString, block);
 					for (int i=0; i < commands.length;i++)
 					{	
-				        int id = Bukkit.getScheduler().scheduleSyncDelayedTask(this, new Runnable(){ 
-				        public void run(){}
-				        },commands[i].getInterval() * 20);
-				        sendeBefehl(blockCmdSender, commands[i].getCommand());
+				        int id = Bukkit.getScheduler().scheduleSyncDelayedTask(this, new Runnable() 
+				        {
+				        	public void run() {  //hier rein:  sendeBefehl 
+				        	}
+				        }, commands[i].getInterval() * 20);
+				        // sendeBefehl(blockCmdSender, commands[i].getCommand());
 				        
 						/*
 						try {
