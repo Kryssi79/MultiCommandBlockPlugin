@@ -69,6 +69,7 @@ public class CommandParser {
 		
 		// random Online Player
 		if (CommandStr.contains("@r")){
+			System.out.println("parsePlayerShortcuts -> @r");
 			filled = true;
 			int rand = random_range(0,playerList.length - 1);
 			ParsedCommand newParsedCommand = new ParsedCommand();
@@ -79,6 +80,7 @@ public class CommandParser {
 		}
 		// all Online Player
 		if (CommandStr.contains("@a")){
+			System.out.println("parsePlayerShortcuts -> @a");
 			for (int i =0; i < playerList.length; i++){
 				filled = true;
 				ParsedCommand newParsedCommand = new ParsedCommand();
@@ -95,6 +97,7 @@ public class CommandParser {
 		}
 		// next Online Player
 		if (CommandStr.contains("@p")){
+			System.out.println("parsePlayerShortcuts -> @p");
 			if (m_fromBlock != null){
 				Location blockLocation = m_fromBlock.getLocation();
 				Location nextPlayerLocation = null;
@@ -102,15 +105,22 @@ public class CommandParser {
 				Player johnDoe = null; // n�chster Player
 				double [] distArray = new double[playerList.length];
 				double nextdist = 0.0;
-				for(int i =0; i < playerList.length; i++){
-					nextPlayerLocation = playerList[i].getLocation();
-					nextdist = getDistance(blockLocation, nextPlayerLocation);
-					for(int x =0; x < distArray.length; x++){
-						if (nextdist <  distArray[x]){
-							johnDoe = playerList[i]; // johnDoe for President ;)
+				
+				if (playerList.length == 1){
+					// wenn nur einer dann direkte zuweisung
+					johnDoe = playerList[0];
+				}
+				else{
+					for(int i =0; i < playerList.length; i++){
+						nextPlayerLocation = playerList[i].getLocation();
+						nextdist = getDistance(blockLocation, nextPlayerLocation);
+						for(int x =0; x < distArray.length; x++){
+							if (nextdist <  distArray[x]){
+								johnDoe = playerList[i]; // johnDoe for President ;)
+							}
 						}
+						distArray[i] = nextdist;
 					}
-					distArray[i] = nextdist;
 				}
 				if (johnDoe != null){
 					filled = true;
