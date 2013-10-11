@@ -77,6 +77,8 @@ public class main_MCBP extends JavaPlugin
 					for (int i=0; i < commands.length;i++)
 					{	
 						final String fiStr = commands[i].getCommand();
+						int iIntTime = 0;
+						iIntTime = commands[i].getInterval() * (i*20);
 				        Bukkit.getScheduler().scheduleSyncDelayedTask(this, new Runnable() 
 				        {
 				        	public void run() 
@@ -84,7 +86,7 @@ public class main_MCBP extends JavaPlugin
 				        		//hier rein:  sendeBefehl 
 				        		sendeBefehl(blockCmdSender, fiStr);
 				        	}
-				        }, commands[i].getInterval() * 20);   //   * 20  ????
+				        }, iIntTime );   //   * 20  ????
 				        
 						/*
 						try {
