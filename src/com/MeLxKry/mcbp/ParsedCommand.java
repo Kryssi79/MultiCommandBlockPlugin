@@ -24,4 +24,11 @@ public class ParsedCommand
 	{
 		return this.m_CommandLine;
 	}
+	
+	@Override
+	protected void finalize() throws Throwable {
+		m_Interval = 0;
+		m_CommandLine = null;
+		super.finalize();
+	}
 }

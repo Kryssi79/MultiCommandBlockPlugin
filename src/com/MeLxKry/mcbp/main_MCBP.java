@@ -28,7 +28,7 @@ public class main_MCBP extends JavaPlugin
    {
         System.out.println("Starte: Multi Command Block Plugin ...  ");
         pluginMan = getServer().getPluginManager();
-        this.m_parser = new CommandParser();
+        this.m_parser = new CommandParser(this);
         System.out.println("  Parser OK  ");
         
         ConfigSpeichern();
@@ -69,7 +69,7 @@ public class main_MCBP extends JavaPlugin
 					System.out.println("     ");
 					System.out.println(" BlockCommandSender sendet ... ");
 					System.out.println("     " + m_CommandsString );
-					ParsedCommand[] commands = getCommands(m_CommandsString);
+					ParsedCommand[] commands = getCommands(m_CommandsString, block);
 					for (int i=0; i < commands.length;i++)
 					{	
 						sendeBefehl(blockCmdSender, commands[i].getCommand());
@@ -87,9 +87,9 @@ public class main_MCBP extends JavaPlugin
 	}
     
     
-	private ParsedCommand[] getCommands(String sCommandsString)
+	private ParsedCommand[] getCommands(String sCommandsString, Block fromBlock)
 	{	
-		m_parser.Parse(sCommandsString);
+		m_parser.Parse(sCommandsString, fromBlock);
 		return m_parser.getCommands();
 	}
 	
