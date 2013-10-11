@@ -7,6 +7,7 @@ import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
+import com.MeLxKry.mcbp.Helper;
 import com.MeLxKry.mcbp.main_MCBP;
 
 
@@ -72,7 +73,7 @@ public class CommandParser {
 		if (CommandStr.contains("@r")){
 			if(bLogToConsole==true)  { System.out.println("parsePlayerShortcuts -> @r"); } 
 			filled = true;
-			int rand = random_range(0,playerList.length - 1);
+			int rand = Helper.random_range(0,playerList.length - 1);
 			ParsedCommand newParsedCommand = new ParsedCommand();
 			newParsedCommand.setInterval(parsedCommandforInterval.getInterval());
 			String newCommand = CommandStr.replace("@r", playerList[rand].getDisplayName());
@@ -99,7 +100,7 @@ public class CommandParser {
 		// next Online Player
 		if (CommandStr.contains("@p")){
 			if(bLogToConsole==true)  { System.out.println("parsePlayerShortcuts -> @p"); }
-			if (m_fromBlock != null){
+			if (m_fromBlock != null) {
 				Location blockLocation = m_fromBlock.getLocation();
 				Location nextPlayerLocation = null;
 				
@@ -114,7 +115,7 @@ public class CommandParser {
 				else{
 					for(int i =0; i < playerList.length; i++){
 						nextPlayerLocation = playerList[i].getLocation();
-						nextdist = getDistance(blockLocation, nextPlayerLocation);
+						nextdist = Helper.getDistance(blockLocation, nextPlayerLocation);
 						for(int x =0; x < distArray.length; x++){
 							if (nextdist <  distArray[x]){
 								johnDoe = playerList[i]; // johnDoe for President ;)
@@ -144,11 +145,11 @@ public class CommandParser {
 		playerList = null;
 	}
 	
-	protected ParsedCommand parseInterval(String CommandStr){
+	protected ParsedCommand parseInterval(String CommandStr) {
 		ParsedCommand pcommand = new ParsedCommand();
 		String[] intervalSplittArray = new String[0];
 		intervalSplittArray = CommandStr.split("#");
-		if (intervalSplittArray.length == 2){
+		if (intervalSplittArray.length == 2) {
 			pcommand.setInterval(Integer.parseInt(intervalSplittArray[1])); // set Interval
 		}
 		// override CommandStr Reference
@@ -156,14 +157,6 @@ public class CommandParser {
 		return pcommand;
 	}
 	
-	private int random_range(int x1, int x2) {
-	    return (int) (Math.floor(x1 + (Math.random() * (x2 - x1))));
-	} 
-	
-	//Entfernung
-	protected double getDistance(Location vLoc1, Location vLoc2){
-		return  vLoc1.distance(vLoc2);
-	}
 	
 	public ParsedCommand[] getCommands() 
 	{
