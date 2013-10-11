@@ -84,7 +84,7 @@ public class main_MCBP extends JavaPlugin
 				        		//hier rein:  sendeBefehl 
 				        		sendeBefehl(blockCmdSender, fiStr);
 				        	}
-				        }, commands[i].getInterval() );   //   * 20  ????
+				        }, commands[i].getInterval() * 20);   //   * 20  ????
 				        
 						/*
 						try {
