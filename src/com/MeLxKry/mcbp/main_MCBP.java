@@ -11,6 +11,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.MeLxKry.mcbp.parser.CommandParser;
+import com.MeLxKry.mcbp.parser.ParsedCommand;
 import com.MeLxKry.mcbp.pluginCommands.*;
 
 

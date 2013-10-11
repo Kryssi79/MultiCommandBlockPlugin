@@ -9,6 +9,9 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.BlockRedstoneEvent;
 import org.bukkit.event.block.SignChangeEvent;
 
+import com.MeLxKry.mcbp.parser.CommandParser;
+import com.MeLxKry.mcbp.parser.ParsedCommand;
+
 
 public class CommandBlockExt //  implements Listener   , CommandSender
 {
