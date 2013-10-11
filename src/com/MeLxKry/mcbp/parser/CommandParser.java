@@ -64,6 +64,9 @@ public class CommandParser {
 		ParsedCommand parsedCommandforInterval = parseInterval(CommandStr);
 		CommandStr = parsedCommandforInterval.getCommand();
 		
+		System.out.println("parsePlayerShortcuts Command ->"+  CommandStr);
+		System.out.println("parsePlayerShortcuts Interval ->"+  parsedCommandforInterval.getInterval());
+		
 		// random Online Player
 		if (CommandStr.contains("@r")){
 			filled = true;
@@ -128,10 +131,11 @@ public class CommandParser {
 		}
 		parsedCommandforInterval = null;
 		playerList = null;
+		
+		System.out.println("parsePlayerShortcuts End");
 	}
 	
-	protected ParsedCommand parseInterval(String CommandStr)
-	{
+	protected ParsedCommand parseInterval(String CommandStr){
 		ParsedCommand pcommand = new ParsedCommand();
 		String[] intervalSplittArray = new String[0];
 		intervalSplittArray = CommandStr.split("#");
@@ -152,8 +156,14 @@ public class CommandParser {
 		return  vLoc1.distance(vLoc2);
 	}
 	
-	public ParsedCommand[] getCommands() {
-		return (ParsedCommand[])m_CommandParts.toArray();
+	public ParsedCommand[] getCommands() 
+	{
+		System.out.println("getCommands ->start");
+		ParsedCommand[] outArray = 
+				m_CommandParts.toArray(new ParsedCommand[m_CommandParts.size()]);
+		System.out.println(outArray.length);
+		System.out.println("getCommands -> end");
+		return outArray;
 	}
 	
 	
