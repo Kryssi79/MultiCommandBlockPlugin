@@ -2,6 +2,7 @@ package com.MeLxKry.mcbp;
 
 // import java.io.IOException;
 
+import org.bukkit.Bukkit;
 import org.bukkit.block.Block;
 import org.bukkit.block.CommandBlock;
 import org.bukkit.command.BlockCommandSender;
@@ -72,12 +73,18 @@ public class main_MCBP extends JavaPlugin
 					ParsedCommand[] commands = getCommands(m_CommandsString, block);
 					for (int i=0; i < commands.length;i++)
 					{	
-						sendeBefehl(blockCmdSender, commands[i].getCommand());
+				        int id = Bukkit.getScheduler().scheduleSyncDelayedTask(this, new Runnable(){ 
+				        public void run(){}
+				        },commands[i].getInterval() * 20);
+				        sendeBefehl(blockCmdSender, commands[i].getCommand());
+				        
+						/*
 						try {
 							Thread.sleep(commands[i].getInterval());  // commands[i].getInterval()
 						} catch (InterruptedException e) {
 							e.printStackTrace();
 						}
+						*/
 					}
 				}
 				return true;
