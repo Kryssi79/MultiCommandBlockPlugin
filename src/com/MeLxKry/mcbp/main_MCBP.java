@@ -10,8 +10,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitRunnable;
-
 import com.MeLxKry.mcbp.parser.CommandParser;
 import com.MeLxKry.mcbp.parser.ParsedCommand;
 
@@ -90,18 +88,9 @@ public class main_MCBP extends JavaPlugin
 				        {
 				        	public void run() 
 				        	{
-				        		//hier rein:  sendeBefehl 
 				        		sendeBefehl(blockCmdSender, fiStr);
 				        	}
-				        }, iIntTime );   //   * 20  ????
-				        
-						/*
-						try {
-							Thread.sleep(commands[i].getInterval());  // commands[i].getInterval()
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						}
-						*/
+				        }, iIntTime );  
 					}
 				}
 				return true;
@@ -117,7 +106,6 @@ public class main_MCBP extends JavaPlugin
 	}
 	
 	
-	// https://board.nitrado.net/community-area/programmierung/hilfe/49382/explosionen-erzeugen-wait/
 	private boolean sendeBefehl(String sCmd)
 	{
 		return sendeBefehl(getServer().getConsoleSender(), sCmd);
@@ -135,7 +123,6 @@ public class main_MCBP extends JavaPlugin
     
     private void ConfigSpeichern()
     {
-    	// saveConfig();
     	this.saveDefaultConfig();
     	//this.saveResource(arg0, arg1);
     }
