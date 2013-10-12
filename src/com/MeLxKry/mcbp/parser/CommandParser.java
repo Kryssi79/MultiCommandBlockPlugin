@@ -63,9 +63,12 @@ public class CommandParser {
 				commands[0] = checkerStr.trim();
 				if(bLogToConsole==true)  { System.out.println("Parse -> MCB Command with empty Parameters found"); }
 			}
+			
+			playerList = m_plugin.getServer().getOnlinePlayers(); // alle Player
 			for(int i =0; i < commands.length; i++){
-				playerList = m_plugin.getServer().getOnlinePlayers(); // alle Player
 				parsedCommandforInterval = m_parserInterval.parseInterval(commands[i].trim());
+				
+				System.out.println("Parser Inteval Object" + parsedCommandforInterval.getCommand());
 				
 				int exist = 0;
 				System.out.println("Parse -> exist" + exist);
