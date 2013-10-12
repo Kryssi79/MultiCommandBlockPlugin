@@ -19,7 +19,7 @@ public class Helper
 	
 	public static int nextRandomInt(int iMax) {
 		Random generator = new Random();
-	    return generator.nextInt();
+	    return generator.nextInt(iMax);
 	}
 	
 	
