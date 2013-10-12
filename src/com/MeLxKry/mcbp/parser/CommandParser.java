@@ -18,21 +18,28 @@ public class CommandParser {
 	ParserAllPayer m_parserAllPayer;
 	ParserNextPlayer m_parserNextPlayer;
 	ParserRandomPlayer m_parserRandomPlayer;
+	protected String[] commands = new String[0];
+	protected ParsedCommand parsedCommandforInterval = null;
 	
 	public CommandParser(main_MCBP plugin){
 		this.m_plugin = plugin;
 		m_CommandParts = new ArrayList<ParsedCommand>();
 		bLogToConsole = m_plugin.getConfig().getBoolean("MultiCommandBlock.logtoconsole");
-		
-		// Load Modules
-		m_parserInterval = new ParserInterval();
-		m_parserAllPayer = new ParserAllPayer();
-		m_parserNextPlayer = new ParserNextPlayer();
-		m_parserRandomPlayer = new ParserRandomPlayer();
+		//loadModules();
 	}
 	
 	public CommandParser(){
 		
+	}
+	
+	
+	void loadModules()
+	{
+		// Load Modules
+		m_parserInterval = new ParserInterval(this); // this = CommandParser
+		m_parserAllPayer = new ParserAllPayer();
+		m_parserNextPlayer = new ParserNextPlayer();
+		m_parserRandomPlayer = new ParserRandomPlayer();
 	}
 	
 	public ParserInterval getIntervalParser(){
@@ -41,12 +48,13 @@ public class CommandParser {
 	
 	public void Parse(String CommandStr, Block fromBlock){
 		m_CommandParts.clear();
+		loadModules();
 		this.m_fromBlock = fromBlock;
-		String[] commands = new String[0];
+		commands = new String[0];  // String[] commands = new String[0];
 		String lowerstring = CommandStr.toLowerCase(); // only for checking the first Characters
 		String checkerStr = "";
 		Player[] playerList = null;
-		ParsedCommand parsedCommandforInterval = null;
+		parsedCommandforInterval = null;
 		
 		if (lowerstring.substring(0, 4).equals("/mcb") ||
 			lowerstring.substring(0, 3).equals("mcb")){
@@ -65,6 +73,7 @@ public class CommandParser {
 			}
 			
 			playerList = m_plugin.getServer().getOnlinePlayers(); // alle Player
+			if(bLogToConsole==true)  { System.out.println("commands.length = "+commands.length ); }
 			for(int i =0; i < commands.length; i++){
 				parsedCommandforInterval = m_parserInterval.parseInterval(commands[i].trim());
 				
@@ -104,8 +113,8 @@ public class CommandParser {
 		if(bLogToConsole==true)  { System.out.println("getCommands ->start"); }
 		ParsedCommand[] outArray = 
 				m_CommandParts.toArray(new ParsedCommand[m_CommandParts.size()]);
-		//System.out.println(outArray.length);
-		//System.out.println("getCommands -> end");
+		System.out.println(outArray.length);
+		System.out.println("getCommands -> end ");
 		return outArray;
 	}
 	

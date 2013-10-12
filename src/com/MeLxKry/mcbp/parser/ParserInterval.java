@@ -1,10 +1,16 @@
 package com.MeLxKry.mcbp.parser;
+
 import com.MeLxKry.mcbp.main_MCBP;
 
-public class ParserInterval extends CommandParser {
+public class ParserInterval extends CommandParser 
+{
 	
-	public ParserInterval() {
-		super();
+	CommandParser oParent;
+	
+	
+	public ParserInterval(CommandParser myParent) {
+		//super();
+		this.oParent = myParent;
 	}
 
 	protected ParsedCommand parseInterval(String CommandStr) {
@@ -18,7 +24,9 @@ public class ParserInterval extends CommandParser {
 			pcommand.setInterval(Integer.parseInt(intervalSplittArray[1])); // set Interval
 		}
 		// override CommandStr Reference
-		pcommand.setCommand(intervalSplittArray[0].trim());
+		pcommand.setCommand(intervalSplittArray[0].trim());  // ist neu  und   base nicht bekannt
+		//oParent.parsedCommandforInterval.setCommand(intervalSplittArray[0].trim());
+		System.out.println("Parent.commands.Len "+oParent.commands.length);
 		return pcommand;
 	}
 }

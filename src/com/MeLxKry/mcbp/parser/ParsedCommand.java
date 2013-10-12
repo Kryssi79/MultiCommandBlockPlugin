@@ -2,8 +2,8 @@ package com.MeLxKry.mcbp.parser;
 
 public class ParsedCommand
 {
-	protected int m_Interval = 5; // standard value
-	protected String m_CommandLine;
+	protected int m_Interval = 1; // standard value
+	String m_CommandLine;
 	
 	public void setInterval(int Interval)
 	{
