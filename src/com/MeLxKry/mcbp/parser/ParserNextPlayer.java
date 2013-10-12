@@ -34,10 +34,19 @@ public class ParserNextPlayer extends CommandParser {
 				for(int i =0; i < playerlist.length; i++){
 					nextPlayerLocation = playerlist[i].getLocation();
 					nextdist = Helper.getDistance(blockLocation, nextPlayerLocation);
+
 					for(int x =0; x < distArray.length; x++){
 						if (nextdist <  distArray[x]){
 							johnDoe = playerlist[i]; // johnDoe for President ;)
 						}
+					}
+					if(bLogToConsole==true)  
+					{ 
+						System.out.println("PlayerLocation -> from " 
+								+ playerlist[i].getDisplayName() 
+								+ " distance -> " 
+								+ nextPlayerLocation); 
+						System.out.println("Who is johnDoe ?: " + johnDoe.getDisplayName());
 					}
 					distArray[i] = nextdist;
 				}
