@@ -9,7 +9,7 @@ public class Helper
 {
 
 	public static double random_DblRange(int x1, int x2) {
-	    return Math.floor(x1 + (Math.random() * (x2 - x1)));
+	    return Math.floor(x1 + (Math.random() * (x2 - x1))); 
 	}
 	
 	public static int random_IntRange(int iFrom, int iTo) {
