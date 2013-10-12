@@ -24,7 +24,7 @@ public class ParserAllPayer extends CommandParser {
 				ParsedCommand newParsedCommand = new ParsedCommand();		
 				// Interval Berechnung = BaseCommand interval / Menge der Commands
 				int interval = parsedCommand.getInterval();
-				interval = interval / playerlist.length;
+				interval = (interval / playerlist.length) / 20;
 							
 				newParsedCommand.setInterval(interval);
 				
