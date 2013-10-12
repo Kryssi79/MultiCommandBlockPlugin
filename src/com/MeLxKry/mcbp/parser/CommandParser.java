@@ -2,12 +2,8 @@ package com.MeLxKry.mcbp.parser;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
-
-import com.MeLxKry.mcbp.Helper;
 import com.MeLxKry.mcbp.main_MCBP;
 
 
@@ -16,11 +12,25 @@ public class CommandParser {
 	main_MCBP m_plugin;
 	Block m_fromBlock;
 	boolean bLogToConsole = false;
+	ParserInterval m_parserInterval;
+	ParserAllPayer m_parserAllPayer;
+	ParserNextPlayer m_parserNextPlayer;
+	ParserRandomPlayer m_parserRandomPlayer;
 	
 	public CommandParser(main_MCBP plugin){
 		this.m_plugin = plugin;
 		m_CommandParts = new ArrayList<ParsedCommand>();
 		bLogToConsole = m_plugin.getConfig().getBoolean("MultiCommandBlock.logtoconsole");
+		
+		// Parser Modules
+		m_parserInterval = new ParserInterval(plugin);
+		m_parserAllPayer = new ParserAllPayer(plugin);
+		m_parserNextPlayer = new ParserNextPlayer(plugin);
+		m_parserRandomPlayer = new ParserRandomPlayer(plugin);
+	}
+	
+	public ParserInterval getIntervalParser(){
+		return m_parserInterval;
 	}
 	
 	public void Parse(String CommandStr, Block fromBlock){
@@ -29,6 +39,8 @@ public class CommandParser {
 		String[] commands = new String[0];
 		String lowerstring = CommandStr.toLowerCase(); // only for checking the first Characters
 		String checkerStr = "";
+		Player[] playerList = null;
+		ParsedCommand parsedCommandforInterval = null;
 		
 		if (lowerstring.substring(0, 4).equals("/mcb") ||
 			lowerstring.substring(0, 3).equals("mcb")){
@@ -46,7 +58,27 @@ public class CommandParser {
 				if(bLogToConsole==true)  { System.out.println("Parse -> MCB Command with empty Parameters found"); }
 			}
 			for(int i =0; i < commands.length; i++){
-				parsePlayerShortcuts(commands[i]); // continue parsing
+				playerList = m_plugin.getServer().getOnlinePlayers(); // alle Player
+				parsedCommandforInterval = m_parserInterval.parseInterval(CommandStr.trim());
+				
+				int exist = 0;
+				
+				// parse @a
+				exist += m_parserAllPayer.Parse(parsedCommandforInterval, playerList);
+				
+				// parse @p
+				exist += m_parserNextPlayer.Parse(parsedCommandforInterval, playerList);
+				
+				// parse @r
+				exist += m_parserRandomPlayer.Parse(parsedCommandforInterval, playerList);
+				
+				if (exist == 0){
+					// take the rest
+					ParsedCommand newParsedCommand = new ParsedCommand();
+					newParsedCommand.setInterval(newParsedCommand.getInterval());
+					newParsedCommand.setCommand(CommandStr);
+					m_CommandParts.add(newParsedCommand);
+				}
 			}
 		}
 		else{
@@ -56,107 +88,6 @@ public class CommandParser {
 		checkerStr = null;
 		commands = null;
 	}
-
-	//for @p  @a  @r 
-	protected void parsePlayerShortcuts(String CommandStr)
-	{
-		boolean filled = false;
-		Player[] playerList = m_plugin.getServer().getOnlinePlayers(); // alle Player
-		
-		ParsedCommand parsedCommandforInterval = parseInterval(CommandStr);
-		CommandStr = parsedCommandforInterval.getCommand();
-		
-		if(bLogToConsole==true)  { System.out.println("parsePlayerShortcuts Command ->"+  CommandStr); }
-		if(bLogToConsole==true)  { System.out.println("parsePlayerShortcuts Interval ->"+  parsedCommandforInterval.getInterval()); } 
-		
-		// random Online Player
-		if (CommandStr.contains("@r")){
-			if(bLogToConsole==true)  { System.out.println("parsePlayerShortcuts -> @r"); } 
-			filled = true;
-			int rand = Helper.nextRandomInt(playerList.length - 1);
-			ParsedCommand newParsedCommand = new ParsedCommand();
-			newParsedCommand.setInterval(parsedCommandforInterval.getInterval());
-			String newCommand = CommandStr.replace("@r", playerList[rand].getDisplayName());
-			newParsedCommand.setCommand(newCommand);
-			m_CommandParts.add(newParsedCommand);
-		}
-		// all Online Player
-		if (CommandStr.contains("@a")){
-			if(bLogToConsole==true)  { System.out.println("parsePlayerShortcuts -> @a"); }
-			for (int i =0; i < playerList.length; i++){
-				filled = true;
-				ParsedCommand newParsedCommand = new ParsedCommand();
-				
-				// Interval Berechnung = BaseCommand interval / Menge der Commands
-				int interval = parsedCommandforInterval.getInterval();
-				interval = interval / playerList.length;
-				
-				newParsedCommand.setInterval(interval);
-				String newCommand = CommandStr.replace("@a", playerList[i].getDisplayName());
-				newParsedCommand.setCommand(newCommand);
-				m_CommandParts.add(newParsedCommand);
-			}
-		}
-		// next Online Player
-		if (CommandStr.contains("@p")){
-			if(bLogToConsole==true)  { System.out.println("parsePlayerShortcuts -> @p"); }
-			if (m_fromBlock != null) {
-				Location blockLocation = m_fromBlock.getLocation();
-				Location nextPlayerLocation = null;
-				
-				Player johnDoe = null; // n�chster Player
-				double [] distArray = new double[playerList.length];
-				double nextdist = 0.0;
-				
-				if (playerList.length == 1){
-					// wenn nur einer dann direkte zuweisung
-					johnDoe = playerList[0];
-				}
-				else{
-					for(int i =0; i < playerList.length; i++){
-						nextPlayerLocation = playerList[i].getLocation();
-						nextdist = Helper.getDistance(blockLocation, nextPlayerLocation);
-						for(int x =0; x < distArray.length; x++){
-							if (nextdist <  distArray[x]){
-								johnDoe = playerList[i]; // johnDoe for President ;)
-							}
-						}
-						distArray[i] = nextdist;
-					}
-				}
-				if (johnDoe != null){
-					filled = true;
-					ParsedCommand newParsedCommand = new ParsedCommand();
-					newParsedCommand.setInterval(parsedCommandforInterval.getInterval());
-					String newCommand = CommandStr.replace("@p", johnDoe.getDisplayName());
-					newParsedCommand.setCommand(newCommand);
-					m_CommandParts.add(newParsedCommand);
-				}
-			}
-		}
-		// if never filled !
-		if (!filled){
-			ParsedCommand newParsedCommand = new ParsedCommand();
-			newParsedCommand.setInterval(newParsedCommand.getInterval());
-			newParsedCommand.setCommand(CommandStr);
-			m_CommandParts.add(newParsedCommand);
-		}
-		parsedCommandforInterval = null;
-		playerList = null;
-	}
-	
-	protected ParsedCommand parseInterval(String CommandStr) {
-		ParsedCommand pcommand = new ParsedCommand();
-		String[] intervalSplittArray = new String[0];
-		intervalSplittArray = CommandStr.split("#");
-		if (intervalSplittArray.length == 2) {
-			pcommand.setInterval(Integer.parseInt(intervalSplittArray[1])); // set Interval
-		}
-		// override CommandStr Reference
-		pcommand.setCommand(intervalSplittArray[0].trim());
-		return pcommand;
-	}
-	
 	
 	public ParsedCommand[] getCommands() 
 	{
@@ -168,7 +99,6 @@ public class CommandParser {
 		return outArray;
 	}
 	
-	
 	//Destructor alternative unter Java
 	@Override
 	protected void finalize() throws Throwable {
@@ -177,6 +107,11 @@ public class CommandParser {
 			m_CommandParts = null;
 		}
 		m_fromBlock = null;
+		
+		m_parserInterval = null;
+		m_parserAllPayer = null;
+		m_parserNextPlayer = null;
+		m_parserRandomPlayer = null;
 		super.finalize();
 	}
 }
