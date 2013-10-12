@@ -25,12 +25,10 @@ public class ParserNextPlayer extends CommandParser {
 			Player johnDoe = null; // naechster Player
 			double [] distArray = new double[playerlist.length];
 			double nextdist = 0.0;
-						
-			if (playerlist.length == 1){
-				// wenn nur einer dann direkte zuweisung
+			
+			if (playerlist.length > 0)
+			{
 				johnDoe = playerlist[0];
-			}
-			else{
 				for(int i =0; i < playerlist.length; i++){
 					nextPlayerLocation = playerlist[i].getLocation();
 					nextdist = Helper.getDistance(blockLocation, nextPlayerLocation);
@@ -40,7 +38,8 @@ public class ParserNextPlayer extends CommandParser {
 							johnDoe = playerlist[i]; // johnDoe for President ;)
 						}
 					}
-					if(bLogToConsole==true)  
+					
+					if(m_Parent.bLogToConsole==true)  
 					{ 
 						System.out.println("PlayerLocation -> from " 
 								+ playerlist[i].getDisplayName() 
@@ -50,18 +49,17 @@ public class ParserNextPlayer extends CommandParser {
 					}
 					distArray[i] = nextdist;
 				}
-			}
-			if (johnDoe != null){
-				exist = 1;
-				ParsedCommand newParsedCommand = new ParsedCommand();
-				newParsedCommand.setInterval(parsedCommand.getInterval());
-				
-				String newCommand = parsedCommand.getCommand().replace("@p", johnDoe.getDisplayName());
-				if(bLogToConsole==true)  { System.out.println("ParserNextPlayer -> "+newCommand); }
-				
-				newParsedCommand.setCommand(newCommand);
-				m_Parent.m_CommandParts.add(newParsedCommand);
-				return exist;
+				if (johnDoe != null){
+					exist = 1;
+					ParsedCommand newParsedCommand = new ParsedCommand();
+					newParsedCommand.setInterval(parsedCommand.getInterval());
+					
+					String newCommand = parsedCommand.getCommand().replace("@p", johnDoe.getDisplayName());
+					if(bLogToConsole==true)  { System.out.println("ParserNextPlayer -> "+newCommand); }
+					
+					newParsedCommand.setCommand(newCommand);
+					m_Parent.m_CommandParts.add(newParsedCommand);
+				}
 			}
 		}
 		}
