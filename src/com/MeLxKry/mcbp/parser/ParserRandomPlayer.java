@@ -23,9 +23,13 @@ public class ParserRandomPlayer extends CommandParser  {
 		}
 		
 		if (parsedCommand.getCommand().contains("@r")){
-			if(m_Parent.bLogToConsole==true)  { System.out.println("ParserRandomPlayer -> @r"); } 
 			exist = 1;
-			int rand = Helper.nextRandomInt(playerlist.length - 1);
+			int rand = Helper.nextRandomInt(playerlist.length);
+			if(m_Parent.bLogToConsole==true)
+			{
+				System.out.println("ParserRandomPlayer -> @r");
+				System.out.println("Randomize Value = " + rand);
+			}
 			ParsedCommand newParsedCommand = new ParsedCommand();
 			newParsedCommand.setInterval(parsedCommand.getInterval());
 			String newCommand = parsedCommand.getCommand().replace
