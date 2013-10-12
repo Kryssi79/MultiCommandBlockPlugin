@@ -23,7 +23,7 @@ public class ParserRandomPlayer extends CommandParser  {
 		}
 		
 		if (parsedCommand.getCommand().contains("@r")){
-			if(bLogToConsole==true)  { System.out.println("ParserRandomPlayer -> @r"); } 
+			if(m_Parent.bLogToConsole==true)  { System.out.println("ParserRandomPlayer -> @r"); } 
 			exist = 1;
 			int rand = Helper.nextRandomInt(playerlist.length - 1);
 			ParsedCommand newParsedCommand = new ParsedCommand();
@@ -32,7 +32,7 @@ public class ParserRandomPlayer extends CommandParser  {
 			("@r", playerlist[rand].getDisplayName());
 			
 			newParsedCommand.setCommand(newCommand);
-			m_CommandParts.add(newParsedCommand);
+			m_Parent.m_CommandParts.add(newParsedCommand);
 		}
 		return exist;
 	}

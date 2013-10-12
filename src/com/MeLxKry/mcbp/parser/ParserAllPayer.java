@@ -18,7 +18,7 @@ public class ParserAllPayer extends CommandParser {
 		
 		// all Online Player
 		if (parsedCommand.getCommand().contains("@a")){
-			if(bLogToConsole==true)  { System.out.println("ParserAllPayer -> @a"); }
+			if(m_Parent.bLogToConsole==true)  { System.out.println("ParserAllPayer -> @a"); }
 			for (int i =0; i < playerlist.length; i++){
 				exist = 1;
 				ParsedCommand newParsedCommand = new ParsedCommand();		
@@ -32,7 +32,7 @@ public class ParserAllPayer extends CommandParser {
 				("@a", playerlist[i].getDisplayName());
 				
 				newParsedCommand.setCommand(newCommand.trim());
-				m_CommandParts.add(newParsedCommand);
+				m_Parent.m_CommandParts.add(newParsedCommand);
 			}
 		}
 		return exist;
