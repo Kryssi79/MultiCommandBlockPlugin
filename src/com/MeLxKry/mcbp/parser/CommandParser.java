@@ -92,12 +92,15 @@ public class CommandParser {
 				exist += m_parserRandomPlayer.Parse(parsedCommandforInterval, playerList);
 				System.out.println("Parse -> exist" + exist);
 				
+				//m_CommandParts.add(parsedCommandforInterval);
+				
 				if (exist == 0){
 					// take the rest
 					ParsedCommand newParsedCommand = new ParsedCommand();
 					newParsedCommand.setInterval(newParsedCommand.getInterval());
 					newParsedCommand.setCommand(CommandStr);
-					m_CommandParts.add(newParsedCommand);
+					//m_CommandParts.add(newParsedCommand);
+					m_CommandParts.add(parsedCommandforInterval);
 				}
 			}
 		}

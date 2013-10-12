@@ -13,11 +13,13 @@ public class Helper
 	}
 	
 	public static int random_IntRange(int iFrom, int iTo) {
+		if(iTo==0) { return 0; }
 		Random generator = new Random();
 	    return generator.nextInt(iTo-iFrom)+iTo;
 	}
 	
 	public static int nextRandomInt(int iMax) {
+		if(iMax==0) { return 0; }
 		Random generator = new Random();
 	    return generator.nextInt(iMax);
 	}

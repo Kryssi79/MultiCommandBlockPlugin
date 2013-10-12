@@ -16,8 +16,8 @@ public class ParserNextPlayer extends CommandParser {
 		int exist = 0;
 		
 		// next Online Player
-		if (parsedCommand.getCommand().contains("@p")){
-		if(bLogToConsole==true)  { System.out.println("ParserNextPlayer -> @p"); }
+		if (parsedCommand.getCommand().contains("@p")) {
+		if(bLogToConsole==true)  { System.out.println("ParserNextPlayer -> @p "); }
 		if (m_fromBlock != null) {
 			Location blockLocation = m_fromBlock.getLocation();
 			Location nextPlayerLocation = null;
@@ -47,11 +47,12 @@ public class ParserNextPlayer extends CommandParser {
 				ParsedCommand newParsedCommand = new ParsedCommand();
 				newParsedCommand.setInterval(parsedCommand.getInterval());
 				
-				String newCommand = parsedCommand.getCommand().replace
-				("@p", johnDoe.getDisplayName());
+				String newCommand = parsedCommand.getCommand().replace("@p", johnDoe.getDisplayName());
+				if(bLogToConsole==true)  { System.out.println("ParserNextPlayer -> "+newCommand); }
 				
 				newParsedCommand.setCommand(newCommand);
 				m_CommandParts.add(newParsedCommand);
+				return exist;
 			}
 		}
 		}
