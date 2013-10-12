@@ -2,24 +2,24 @@ package com.MeLxKry.mcbp.parser;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
-
 import com.MeLxKry.mcbp.Helper;
-import com.MeLxKry.mcbp.main_MCBP;
 
 public class ParserNextPlayer extends CommandParser {
 	
-	public ParserNextPlayer() {
-		//super();
+	CommandParser m_Parent;
+	
+	public ParserNextPlayer(CommandParser myParent) {
+		this.m_Parent = myParent;
 	}
 
 	protected int Parse(ParsedCommand parsedCommand, Player[] playerlist){
 		int exist = 0;
-		
 		// next Online Player
+		
 		if (parsedCommand.getCommand().contains("@p")) {
-		if(bLogToConsole==true)  { System.out.println("ParserNextPlayer -> @p "); }
-		if (m_fromBlock != null) {
-			Location blockLocation = m_fromBlock.getLocation();
+		if(m_Parent.bLogToConsole==true)  { System.out.println("ParserNextPlayer -> @p "); }
+		if (m_Parent.m_fromBlock != null) {
+			Location blockLocation = m_Parent.m_fromBlock.getLocation();
 			Location nextPlayerLocation = null;
 						
 			Player johnDoe = null; // naechster Player
@@ -51,7 +51,7 @@ public class ParserNextPlayer extends CommandParser {
 				if(bLogToConsole==true)  { System.out.println("ParserNextPlayer -> "+newCommand); }
 				
 				newParsedCommand.setCommand(newCommand);
-				m_CommandParts.add(newParsedCommand);
+				m_Parent.m_CommandParts.add(newParsedCommand);
 				return exist;
 			}
 		}

@@ -7,8 +7,10 @@ import com.MeLxKry.mcbp.main_MCBP;
 
 public class ParserRandomPlayer extends CommandParser  {
 
-	public ParserRandomPlayer() {
-		//super();
+	CommandParser m_Parent;
+	
+	public ParserRandomPlayer(CommandParser myParent) {
+		this.m_Parent = myParent;
 	}
 
 	protected int Parse(ParsedCommand parsedCommand, Player[] playerlist){

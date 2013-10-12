@@ -12,8 +12,8 @@ import com.MeLxKry.mcbp.main_MCBP;
 public class CommandParser {
 	protected List<ParsedCommand> m_CommandParts;
 	main_MCBP m_plugin;
-	Block m_fromBlock;
-	boolean bLogToConsole = false;
+	protected Block m_fromBlock;
+	protected boolean bLogToConsole = false;
 	protected ParserInterval m_parserInterval;
 	ParserAllPayer m_parserAllPayer;
 	ParserNextPlayer m_parserNextPlayer;
@@ -37,9 +37,9 @@ public class CommandParser {
 	{
 		// Load Modules
 		m_parserInterval = new ParserInterval(this); // this = CommandParser
-		m_parserAllPayer = new ParserAllPayer();
-		m_parserNextPlayer = new ParserNextPlayer();
-		m_parserRandomPlayer = new ParserRandomPlayer();
+		m_parserAllPayer = new ParserAllPayer(this);
+		m_parserNextPlayer = new ParserNextPlayer(this);
+		m_parserRandomPlayer = new ParserRandomPlayer(this);
 	}
 	
 	public ParserInterval getIntervalParser() {
