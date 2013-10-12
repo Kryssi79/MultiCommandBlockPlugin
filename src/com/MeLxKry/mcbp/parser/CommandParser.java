@@ -2,8 +2,10 @@ package com.MeLxKry.mcbp.parser;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
+
 import com.MeLxKry.mcbp.main_MCBP;
 
 
@@ -21,12 +23,14 @@ public class CommandParser {
 		this.m_plugin = plugin;
 		m_CommandParts = new ArrayList<ParsedCommand>();
 		bLogToConsole = m_plugin.getConfig().getBoolean("MultiCommandBlock.logtoconsole");
+	}
+	
+	public CommandParser(String CommandStr){
 		
-		// Parser Modules
-		m_parserInterval = new ParserInterval(plugin);
-		m_parserAllPayer = new ParserAllPayer(plugin);
-		m_parserNextPlayer = new ParserNextPlayer(plugin);
-		m_parserRandomPlayer = new ParserRandomPlayer(plugin);
+	}
+	
+	public CommandParser(ParsedCommand postIntervalParsedCommentObj, Player[] playerList){
+		
 	}
 	
 	public ParserInterval getIntervalParser(){
@@ -59,18 +63,26 @@ public class CommandParser {
 			}
 			for(int i =0; i < commands.length; i++){
 				playerList = m_plugin.getServer().getOnlinePlayers(); // alle Player
-				parsedCommandforInterval = m_parserInterval.parseInterval(CommandStr.trim());
+				
+				m_parserInterval = new ParserInterval(commands[i].trim());
+				parsedCommandforInterval = m_parserInterval.parseInterval();
+				
+				// Load Modules
+				m_parserAllPayer = new ParserAllPayer(parsedCommandforInterval, playerList);
+				m_parserNextPlayer = new ParserNextPlayer(parsedCommandforInterval, playerList);
+				m_parserRandomPlayer = new ParserRandomPlayer(parsedCommandforInterval, playerList);
 				
 				int exist = 0;
-				
+				System.out.println("Parse -> exist" + exist);
 				// parse @a
-				exist += m_parserAllPayer.Parse(parsedCommandforInterval, playerList);
-				
+				exist += m_parserAllPayer.Parse();
+				System.out.println("Parse -> exist" + exist);
 				// parse @p
-				exist += m_parserNextPlayer.Parse(parsedCommandforInterval, playerList);
-				
+				exist += m_parserNextPlayer.Parse();
+				System.out.println("Parse -> NextPlayer" + exist);
 				// parse @r
-				exist += m_parserRandomPlayer.Parse(parsedCommandforInterval, playerList);
+				exist += m_parserRandomPlayer.Parse();
+				System.out.println("Parse -> exist" + exist);
 				
 				if (exist == 0){
 					// take the rest
