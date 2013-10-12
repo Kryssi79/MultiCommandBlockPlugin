@@ -8,7 +8,7 @@ import com.MeLxKry.mcbp.main_MCBP;
 public class ParserAllPayer extends CommandParser {
 
 	public ParserAllPayer() {
-		super();
+		//super();
 	}
 
 	protected int Parse(ParsedCommand parsedCommand, Player[] playerlist)

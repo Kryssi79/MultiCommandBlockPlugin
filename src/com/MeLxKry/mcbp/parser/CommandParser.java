@@ -10,11 +10,11 @@ import com.MeLxKry.mcbp.main_MCBP;
 
 
 public class CommandParser {
-	List<ParsedCommand> m_CommandParts;
+	protected List<ParsedCommand> m_CommandParts;
 	main_MCBP m_plugin;
 	Block m_fromBlock;
 	boolean bLogToConsole = false;
-	ParserInterval m_parserInterval;
+	protected ParserInterval m_parserInterval;
 	ParserAllPayer m_parserAllPayer;
 	ParserNextPlayer m_parserNextPlayer;
 	ParserRandomPlayer m_parserRandomPlayer;
@@ -28,8 +28,8 @@ public class CommandParser {
 		//loadModules();
 	}
 	
-	public CommandParser(){
-		
+	public CommandParser() {
+		//bLogToConsole = m_plugin.getConfig().getBoolean("MultiCommandBlock.logtoconsole");
 	}
 	
 	
@@ -42,11 +42,12 @@ public class CommandParser {
 		m_parserRandomPlayer = new ParserRandomPlayer();
 	}
 	
-	public ParserInterval getIntervalParser(){
+	public ParserInterval getIntervalParser() {
 		return m_parserInterval;
 	}
 	
-	public void Parse(String CommandStr, Block fromBlock){
+	public void Parse(String CommandStr, Block fromBlock) 
+	{
 		m_CommandParts.clear();
 		loadModules();
 		this.m_fromBlock = fromBlock;
@@ -77,7 +78,7 @@ public class CommandParser {
 			for(int i =0; i < commands.length; i++){
 				parsedCommandforInterval = m_parserInterval.parseInterval(commands[i].trim());
 				
-				System.out.println("Parser Inteval Object" + parsedCommandforInterval.getCommand());
+				System.out.println("Parser Inteval Object " + parsedCommandforInterval.getCommand());
 				
 				int exist = 0;
 				System.out.println("Parse -> exist" + exist);
@@ -113,7 +114,6 @@ public class CommandParser {
 		if(bLogToConsole==true)  { System.out.println("getCommands ->start"); }
 		ParsedCommand[] outArray = 
 				m_CommandParts.toArray(new ParsedCommand[m_CommandParts.size()]);
-		System.out.println(outArray.length);
 		System.out.println("getCommands -> end ");
 		return outArray;
 	}

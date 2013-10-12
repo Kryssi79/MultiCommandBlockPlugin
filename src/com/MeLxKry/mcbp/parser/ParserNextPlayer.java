@@ -9,7 +9,7 @@ import com.MeLxKry.mcbp.main_MCBP;
 public class ParserNextPlayer extends CommandParser {
 	
 	public ParserNextPlayer() {
-		super();
+		//super();
 	}
 
 	protected int Parse(ParsedCommand parsedCommand, Player[] playerlist){
