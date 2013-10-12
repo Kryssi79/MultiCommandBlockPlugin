@@ -23,13 +23,15 @@ public class CommandParser {
 		this.m_plugin = plugin;
 		m_CommandParts = new ArrayList<ParsedCommand>();
 		bLogToConsole = m_plugin.getConfig().getBoolean("MultiCommandBlock.logtoconsole");
-	}
-	
-	public CommandParser(String CommandStr){
 		
+		// Load Modules
+		m_parserInterval = new ParserInterval();
+		m_parserAllPayer = new ParserAllPayer();
+		m_parserNextPlayer = new ParserNextPlayer();
+		m_parserRandomPlayer = new ParserRandomPlayer();
 	}
 	
-	public CommandParser(ParsedCommand postIntervalParsedCommentObj, Player[] playerList){
+	public CommandParser(){
 		
 	}
 	
@@ -63,25 +65,18 @@ public class CommandParser {
 			}
 			for(int i =0; i < commands.length; i++){
 				playerList = m_plugin.getServer().getOnlinePlayers(); // alle Player
-				
-				m_parserInterval = new ParserInterval(commands[i].trim());
-				parsedCommandforInterval = m_parserInterval.parseInterval();
-				
-				// Load Modules
-				m_parserAllPayer = new ParserAllPayer(parsedCommandforInterval, playerList);
-				m_parserNextPlayer = new ParserNextPlayer(parsedCommandforInterval, playerList);
-				m_parserRandomPlayer = new ParserRandomPlayer(parsedCommandforInterval, playerList);
+				parsedCommandforInterval = m_parserInterval.parseInterval(commands[i].trim());
 				
 				int exist = 0;
 				System.out.println("Parse -> exist" + exist);
 				// parse @a
-				exist += m_parserAllPayer.Parse();
+				exist += m_parserAllPayer.Parse(parsedCommandforInterval, playerList);
 				System.out.println("Parse -> exist" + exist);
 				// parse @p
-				exist += m_parserNextPlayer.Parse();
+				exist += m_parserNextPlayer.Parse(parsedCommandforInterval, playerList);
 				System.out.println("Parse -> NextPlayer" + exist);
 				// parse @r
-				exist += m_parserRandomPlayer.Parse();
+				exist += m_parserRandomPlayer.Parse(parsedCommandforInterval, playerList);
 				System.out.println("Parse -> exist" + exist);
 				
 				if (exist == 0){
