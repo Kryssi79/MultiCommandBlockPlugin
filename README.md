@@ -19,6 +19,7 @@ Build a Command Block and use the following syntax!
 we have also reimplement the @a @p @r shortcuts
 
 <strong>Syntax</strong>
+<b />
 @a = all Player
 @r = random Player
 @p = next Player
@@ -33,3 +34,9 @@ we have also reimplement the @a @p @r shortcuts
 <pre>
 /mcb tp @a -100 100 50#10; say @p is a nice Player#20
 </pre>
+
+## Screenshots
+
+<img src="https://github.com/memoryleakx/MultiCommandBlockPlugin/blob/master/screenshots/screen01.png" border="0">
+<b/>
+<img src="https://github.com/memoryleakx/MultiCommandBlockPlugin/blob/master/screenshots/screen02.png" border="0">">
