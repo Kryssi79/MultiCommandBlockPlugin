@@ -41,4 +41,4 @@ we have also reimplement the @a @p @r shortcuts
 
 <img src="https://raw.github.com/memoryleakx/MultiCommandBlockPlugin/master/screenshots/screen01.png" border="0">
 <b/>
-<img src="https://raw.github.com/memoryleakx/MultiCommandBlockPlugin/master/screenshots/screen01.png" border="0">
+<img src="https://raw.github.com/memoryleakx/MultiCommandBlockPlugin/master/screenshots/screen02.png" border="0">
