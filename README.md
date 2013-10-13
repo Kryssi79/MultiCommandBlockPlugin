@@ -37,6 +37,13 @@ we have also reimplement the @a @p @r shortcuts
 /mcb tp @a -100 100 50#10; say @p is a nice Player#20
 </pre>
 
+###Developer
+<ul>
+  <li>Kryssi79</li>
+  <li>MemoryLeakX</li>
+</ul>
+<a href="https://github.com/memoryleakx/MultiCommandBlockPlugin/graphs/contributors" target="_blank">contributors</a>
+
 ## Screenshots
 
 <img src="https://raw.github.com/memoryleakx/MultiCommandBlockPlugin/master/screenshots/screen01.png" border="0">
