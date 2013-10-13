@@ -37,6 +37,6 @@ we have also reimplement the @a @p @r shortcuts
 
 ## Screenshots
 
-<img src="https://github.com/memoryleakx/MultiCommandBlockPlugin/blob/master/screenshots/screen01.png" border="0">
+<img src="http://github.com/memoryleakx/MultiCommandBlockPlugin/blob/master/screenshots/screen01.png" border="0">
 <b/>
-<img src="https://github.com/memoryleakx/MultiCommandBlockPlugin/blob/master/screenshots/screen02.png" border="0">">
+<img src="http://github.com/memoryleakx/MultiCommandBlockPlugin/blob/master/screenshots/screen02.png" border="0">
