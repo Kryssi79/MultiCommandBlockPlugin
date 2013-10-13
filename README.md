@@ -20,9 +20,11 @@ we have also reimplement the @a @p @r shortcuts
 
 <strong>Syntax</strong>
 <b />
-*@a = all Player
-*@r = random Player
-*@p = next Player
+<ul>
+  <li>@a = all Player</li>
+  <li>@r = random Player</li>
+  <li>@p = next Player</li>
+</ul>
 
 <pre>
 /mcb [command1] @a#[interval1]; [command2] @p#[interval2]
