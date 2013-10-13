@@ -20,19 +20,23 @@ public class ParserAllPayer extends CommandParser {
 		if (parsedCommand.getCommand().contains("@a")){
 			if(m_Parent.bLogToConsole==true)  { System.out.println("ParserAllPayer -> @a"); }
 			for (int i =0; i < playerlist.length; i++){
-				exist = 1;
-				ParsedCommand newParsedCommand = new ParsedCommand();		
-				// Interval Berechnung = BaseCommand interval / Menge der Commands
-				int interval = parsedCommand.getInterval();
-				interval = (interval / playerlist.length) / 20;
-							
-				newParsedCommand.setInterval(interval);
-				
-				String newCommand = parsedCommand.getCommand().replace
-				("@a", playerlist[i].getDisplayName());
-				
-				newParsedCommand.setCommand(newCommand.trim());
-				m_Parent.m_CommandParts.add(newParsedCommand);
+				// compare player World with block current Block World
+				if (playerlist[i].getWorld().equals(m_Parent.m_fromBlock.getWorld()))
+				{
+					exist = 1;
+					ParsedCommand newParsedCommand = new ParsedCommand();		
+					// Interval Berechnung = BaseCommand interval / Menge der Commands
+					int interval = parsedCommand.getInterval();
+					interval = (interval / playerlist.length) / 20;
+								
+					newParsedCommand.setInterval(interval);
+					
+					String newCommand = parsedCommand.getCommand().replace
+					("@a", playerlist[i].getDisplayName());
+					
+					newParsedCommand.setCommand(newCommand.trim());
+					m_Parent.m_CommandParts.add(newParsedCommand);
+				}
 			}
 		}
 		return exist;

@@ -22,7 +22,7 @@ public class ParserNextPlayer extends CommandParser {
 			Location blockLocation = m_Parent.m_fromBlock.getLocation();
 			Location nextPlayerLocation = null;
 						
-			Player johnDoe = null; // naechster Player
+			Player johnDoe = null; // next Player
 			double [] distArray = new double[playerlist.length];
 			double nextdist = 0.0;
 			
