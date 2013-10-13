@@ -49,3 +49,6 @@ we have also reimplement the @a @p @r shortcuts
 <img src="https://raw.github.com/memoryleakx/MultiCommandBlockPlugin/master/screenshots/screen01.png" border="0">
 <b/>
 <img src="https://raw.github.com/memoryleakx/MultiCommandBlockPlugin/master/screenshots/screen02.png" border="0">
+
+##Video
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/Do6zfznL-Io/0.jpg)](https://www.youtube.com/watch?v=Do6zfznL-Io)
