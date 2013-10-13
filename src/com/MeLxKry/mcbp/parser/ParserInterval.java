@@ -1,5 +1,6 @@
 package com.MeLxKry.mcbp.parser;
 
+import com.MeLxKry.mcbp.Helper;
 import com.MeLxKry.mcbp.main_MCBP;
 
 public class ParserInterval extends CommandParser 
@@ -19,7 +20,7 @@ public class ParserInterval extends CommandParser
 		
 		intervalSplittArray = CommandStr.split("#");
 		if (intervalSplittArray.length == 2) {
-			pcommand.setInterval(Integer.parseInt(intervalSplittArray[1])); // set Interval
+			pcommand.setInterval(Helper.tryParse(intervalSplittArray[1])); // set Interval
 		}
 		// override CommandStr Reference
 		pcommand.setCommand(intervalSplittArray[0].trim());  // ist neu  und   base nicht bekannt

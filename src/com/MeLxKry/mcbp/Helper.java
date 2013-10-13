@@ -30,5 +30,16 @@ public class Helper
 		return  vLoc1.distance(vLoc2);
 	}
 	
+	//implementation of 'TryParse' 
+	public static Integer tryParse(String pString) {
+		 Integer retVal;
+		 try {
+		    retVal = Integer.parseInt(pString);
+		 } catch (NumberFormatException nfe) {
+		   retVal = 0;
+		 }
+		 return retVal;
+	}
+	
 	
 }
